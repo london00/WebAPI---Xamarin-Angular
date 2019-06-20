@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
+using UdemyDotNetCoreAngular.Domain.Models;
 
-namespace UdemyDotNetCoreAngular.Models.DTO.Maps
+namespace UdemyDotNetCoreAngular.DTO.Maps
 {
     public class MappingProfile: Profile
     {

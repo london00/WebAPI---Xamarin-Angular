@@ -2,7 +2,7 @@
 using System.Collections.ObjectModel;
 using System.ComponentModel.DataAnnotations;
 
-namespace UdemyDotNetCoreAngular.Models
+namespace UdemyDotNetCoreAngular.Domain.Models
 {
     public class Make
     {
