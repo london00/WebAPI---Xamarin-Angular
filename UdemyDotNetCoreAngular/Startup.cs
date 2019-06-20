@@ -1,3 +1,4 @@
+using AutoMapper;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -22,10 +23,11 @@ namespace UdemyDotNetCoreAngular
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<VegaDBContext>(
-                    c=> c.UseSqlServer(Configuration.GetConnectionString("Default"))
-                );
+            services.AddDbContext<VegaDBContext>(c=> c.UseSqlServer(Configuration.GetConnectionString("Default")));
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+#pragma warning disable CS0618 // Type or member is obsolete
+            services.AddAutoMapper();
+#pragma warning restore CS0618 // Type or member is obsolete
 
             // In production, the Angular files will be served from this directory
             services.AddSpaStaticFiles(configuration =>
