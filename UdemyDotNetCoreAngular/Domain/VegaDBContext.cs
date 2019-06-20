@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using UdemyDotNetCoreAngular.Models;
 
 namespace UdemyDotNetCoreAngular.Domain
 {
@@ -8,5 +9,8 @@ namespace UdemyDotNetCoreAngular.Domain
         {
 
         }
+
+        public DbSet<Make> Makes { get; set; }
+        public DbSet<Model> Models { get; set; }
     }
 }
