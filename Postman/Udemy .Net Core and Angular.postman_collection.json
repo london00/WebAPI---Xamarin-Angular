@@ -1,0 +1,40 @@
+{
+	"info": {
+		"_postman_id": "2e7e61af-8200-4ed4-b1ee-ddc3240c149d",
+		"name": "Udemy .Net Core and Angular",
+		"description": "In order to complete the task from Udemy course an Azure DevOps project has been created.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "FeatureController",
+			"item": [
+				{
+					"name": "GetFeaturesByModel",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/Features/GetFeaturesByModel?ModelId=1",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"Features",
+								"GetFeaturesByModel"
+							],
+							"query": [
+								{
+									"key": "ModelId",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
