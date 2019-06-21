@@ -1,6 +1,5 @@
-import { Component, Inject } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { debug } from 'util';
+import { Component } from '@angular/core';
+import { MakeService, MakeDTO } from '../services/makes.service';
 
 @Component({
   selector: 'app-vehicle',
@@ -9,22 +8,20 @@ import { debug } from 'util';
 })
 export class VehicleComponent {
   public makes: MakeDTO[];
+  public makeService: MakeService;
 
-  constructor(http: HttpClient, @Inject('BASE_URL') baseUrl: string) {
-    http.get<MakeDTO[]>(baseUrl + 'api/Makes/GetMakes').subscribe(result => {
-      this.makes = result;
-    }, error => console.error(error));
+  constructor(makeService: MakeService) {
+    this.makeService = makeService;
   }
-}
 
-interface MakeDTO {
-  Id: number;
-  Name: string;
-  Models: ModelDTO[];
-}
-
-interface ModelDTO {
-  Id: number;
-  Name: string;
-  MakeId: number;
+  ngOnInit() {
+    debugger;
+    this.makeService.GetMakes().subscribe(result => {
+        this.makes = result;
+      },
+      error => {
+        console.error(error);
+      }
+    );
+  }
 }
