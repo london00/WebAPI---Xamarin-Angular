@@ -2,19 +2,16 @@
 <form>
   <div class="form-group">
     <label for="Make">Make</label>
-    <select class="form-control" id="Make">
-      <option disabled>Select an option</option>
+    <select class="form-control" id="Make" [(ngModel)]="vehicle.make" (change)="onMakeChange()" name="make">
+      <option value="0" disabled>Select an option</option>
       <option *ngFor="let make of makes" value="{{ make.Id }}">{{ make.Name }}</option>
     </select>
   </div>
   <div class="form-group" >
     <label for="Model">Model</label>
-    <select class="form-control" id="Model">
-      <option>1</option>
-      <option>2</option>
-      <option>3</option>
-      <option>4</option>
-      <option>5</option>
+    <select class="form-control" id="Model" [(ngModel)]="vehicle.model" name="model">
+      <option value="0" disabled>Select an option</option>
+      <option *ngFor="let model of models" value="{{ model.Id }}">{{ model.Name }}</option>
     </select>
   </div>
   <div class="form-group">
