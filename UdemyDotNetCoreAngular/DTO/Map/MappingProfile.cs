@@ -9,6 +9,7 @@ namespace UdemyDotNetCoreAngular.DTO.Maps
         {
             CreateMap<Model, ModelDTO>();
             CreateMap<Make, MakeDTO>();
+            CreateMap<Feature, FeatureDTO>();
         }
     }
 }

@@ -2,15 +2,17 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using UdemyDotNetCoreAngular.Domain;
 
 namespace UdemyDotNetCoreAngular.Migrations
 {
     [DbContext(typeof(VegaDBContext))]
-    partial class VegaDBContextModelSnapshot : ModelSnapshot
+    [Migration("20190621143554_Add Feature table")]
+    partial class AddFeaturetable
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
