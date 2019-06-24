@@ -1,6 +1,7 @@
 import { Injectable, Inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { MakeDTO } from '../DTO/ModelContext';
 
 @Injectable()
 export class MakeService {
@@ -15,16 +16,4 @@ export class MakeService {
   public GetMakes(): Observable<MakeDTO[]> {
     return this.http.get<MakeDTO[]>(this.baseUrl + 'api/Makes/GetMakes');
   }
-}
-
-export interface MakeDTO {
-  Id: number;
-  Name: string;
-  Models: ModelDTO[];
-}
-
-export interface ModelDTO {
-  Id: number;
-  Name: string;
-  MakeId: number;
 }

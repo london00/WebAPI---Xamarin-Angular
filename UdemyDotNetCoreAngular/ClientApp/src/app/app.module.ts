@@ -15,6 +15,7 @@ import { VehicleComponent } from "./vehicle/vehicle.component";
 
 // Providers
 import { MakeService } from './services/makes.service';
+import { FeaturesService } from './services/features.service';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,7 @@ import { MakeService } from './services/makes.service';
     ]),
   ],
   providers: [
-    MakeService
+    MakeService, FeaturesService
   ],
   bootstrap: [AppComponent]
 })

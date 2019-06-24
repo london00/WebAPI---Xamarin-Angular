@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
-import { MakeService, MakeDTO, ModelDTO } from '../services/makes.service';
+import { MakeService } from '../services/makes.service';
+import { FeaturesService } from '../services/features.service';
+import { MakeDTO, ModelDTO, FeatureDTO } from '../DTO/ModelContext';
 
 @Component({
   selector: 'app-vehicle',
@@ -10,11 +12,15 @@ export class VehicleComponent {
   public vehicle: any = {};
   public makes: MakeDTO[];
   public makeService: MakeService;
+  public featuresService: FeaturesService;
   public models: ModelDTO[];
+  public features: FeatureDTO[];
 
-  constructor(makeService: MakeService) {
+  constructor(makeService: MakeService, featuresService: FeaturesService) {
     this.makeService = makeService;
+    this.featuresService = featuresService;
     this.makes = new Array<MakeDTO>();
+    this.features = new Array<FeatureDTO>();
     this.vehicle = {
       make: 0,
       model: 0
@@ -26,7 +32,7 @@ export class VehicleComponent {
         this.makes = result;
       },
       error => {
-        console.error(error);
+        console.error("GetMakes has failed" + error);
       }
     );
   }
@@ -41,5 +47,21 @@ export class VehicleComponent {
     }
 
     this.vehicle.model = 0;
+  }
+
+  onModelChange() {
+    var selectedModel = this.models.find(f => f.Id == this.vehicle.model);
+    if (typeof (selectedModel) != "undefined") {
+      this.featuresService.GetFeaturesByModel(selectedModel.Id).subscribe(result => {
+        this.features = result;
+      },
+        error => {
+          console.error("GetFeaturesByModel has failed: " + error);
+        }
+      );
+    }
+    else {
+      this.features = new Array<FeatureDTO>();
+    }
   }
 }
