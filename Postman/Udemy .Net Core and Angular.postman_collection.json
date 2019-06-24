@@ -35,6 +35,41 @@
 					"response": []
 				}
 			]
+		},
+		{
+			"name": "VehiclesController",
+			"item": [
+				{
+					"name": "SaveVehicle",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"Id\": 1,\n    \"ModelId\": 1,\n    \"IsRegistered\": true,\n    \"Contact\": {\n\t    \"Name\": \"Geiser Aragón\",\n\t    \"Phone\": \"9991913233\",\n\t    \"Mail\": \"geiser.aragon@ksquareinc.com\"\n    },\n    \"VehicleFeatures\": [1]\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/Vehicles/save",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"Vehicles",
+								"save"
+							]
+						}
+					},
+					"response": []
+				}
+			]
 		}
 	]
 }
