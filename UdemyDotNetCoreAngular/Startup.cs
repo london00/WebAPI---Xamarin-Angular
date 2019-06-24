@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.SpaServices.AngularCli;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Newtonsoft.Json.Serialization;
 using UdemyDotNetCoreAngular.Domain;
 
 namespace UdemyDotNetCoreAngular
@@ -24,7 +25,12 @@ namespace UdemyDotNetCoreAngular
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<VegaDBContext>(c=> c.UseSqlServer(Configuration.GetConnectionString("Default")));
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+            services.AddMvc()
+                    .SetCompatibilityVersion(CompatibilityVersion.Version_2_2)
+                    .AddJsonOptions(options => {
+                        options.SerializerSettings.ContractResolver = new DefaultContractResolver();
+                    });
+
 #pragma warning disable CS0618 // Type or member is obsolete
             services.AddAutoMapper();
 #pragma warning restore CS0618 // Type or member is obsolete

@@ -1,4 +1,4 @@
-﻿namespace UdemyDotNetCoreAngular.Models.DTO
+﻿namespace UdemyDotNetCoreAngular.DTO
 {
     public class ModelDTO
     {

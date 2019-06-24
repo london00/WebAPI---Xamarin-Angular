@@ -1,0 +1,56 @@
+<h1>Please complete the vehicle information</h1>
+<form>
+  <div class="form-group">
+    <label for="Make">Make</label>
+    <select class="form-control" id="Make" [(ngModel)]="vehicle.make" (change)="onMakeChange()" name="make">
+      <option value="0" disabled>Select an option</option>
+      <option *ngFor="let make of makes" value="{{ make.Id }}">{{ make.Name }}</option>
+    </select>
+  </div>
+  <div class="form-group" >
+    <label for="Model">Model</label>
+    <select class="form-control" id="Model" [(ngModel)]="vehicle.model" (change)="onModelChange()" name="model">
+      <option value="0" disabled>Select an option</option>
+      <option *ngFor="let model of models" value="{{ model.Id }}">{{ model.Name }}</option>
+    </select>
+  </div>
+  <div class="form-group">
+    <label for="IsRegistered">Is this vehicle registered?</label>
+    <div class="form-check">
+      <input class="form-check-input" type="radio" name="isRegistered" id="isRegistered_Yes" value="Yes" checked>
+      <label class="form-check-label" for="isRegistered_Yes">
+        Yes
+      </label>
+    </div>
+    <div class="form-check">
+      <input class="form-check-input" type="radio" name="isRegistered" id="isRegistered_No" value="No">
+      <label class="form-check-label" for="isRegistered_No">
+        No
+      </label>
+    </div>
+  </div>
+  <div class="form-group"  *ngIf="features.length > 0">
+    <label for="Features">Features</label>
+    <div class="form-check" *ngFor="let feature of features">
+      <input class="form-check-input" type="checkbox" value="" id="feauture_{{ feature.Id }}" name="feature">
+      <label class="form-check-label" for="feauture_{{ feature.Id }}">
+        {{ feature.Name }}
+      </label>
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="ContactName">Contact Name</label>
+    <input type="text" class="form-control" id="ContactName" placeholder="Enter name">
+  </div>
+  <div class="form-group">
+    <label for="ContactPhone">Contact Phone</label>
+    <input type="text" class="form-control" id="ContactPhone" aria-describedby="phoneHelp" placeholder="Enter Phone">
+    <small id="phoneHelp" class="form-text text-muted">We'll never share your phone number with anyone else.</small>
+  </div>
+  <div class="form-group">
+    <label for="ContactEmail">Contact Email</label>
+    <input type="email" class="form-control" id="ContactEmail" aria-describedby="emailHelp" placeholder="Enter email">
+    <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+  </div>
+  <button class="btn btn-primary">Save</button>
+</form>

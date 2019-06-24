@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
+using UdemyDotNetCoreAngular.Domain.Models;
 
-namespace UdemyDotNetCoreAngular.Models.DTO.Maps
+namespace UdemyDotNetCoreAngular.DTO.Maps
 {
     public class MappingProfile: Profile
     {
@@ -8,6 +9,7 @@ namespace UdemyDotNetCoreAngular.Models.DTO.Maps
         {
             CreateMap<Model, ModelDTO>();
             CreateMap<Make, MakeDTO>();
+            CreateMap<Feature, FeatureDTO>();
         }
     }
 }

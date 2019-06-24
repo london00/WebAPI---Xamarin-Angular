@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace UdemyDotNetCoreAngular.Models.DTO
+namespace UdemyDotNetCoreAngular.DTO
 {
     public class MakeDTO
     {
