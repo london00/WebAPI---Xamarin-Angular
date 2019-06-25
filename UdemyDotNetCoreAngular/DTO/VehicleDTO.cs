@@ -15,7 +15,7 @@ namespace UdemyDotNetCoreAngular.DTO
         public bool IsRegistered { get; set; }
         [Required]
         public ContactInfo Contact { get; set; }
-        public ICollection<int> VehicleFeatures { get; set; }
+        public ICollection<VehicleFeatureDTO> VehicleFeatures { get; set; }
 
         public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
         {

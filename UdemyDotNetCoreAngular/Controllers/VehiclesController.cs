@@ -35,5 +35,24 @@ namespace UdemyDotNetCoreAngular.Controllers
             var vehicleDTO = mapper.Map<Vehicle, VehicleDTO>(vehicle);
             return Ok(vehicleDTO);
         }
+
+        [HttpPut("{id}")]
+        public async Task<IActionResult> Update(int id, [FromBody] VehicleDTO model)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            var vehicle = await db.Vehicles.Include(x => x.VehicleFeatures).AsNoTracking().SingleOrDefaultAsync(x => x.Id == id);
+            mapper.Map<VehicleDTO, Vehicle>(model, vehicle);
+            vehicle.LastUpdate = DateTime.Now;
+
+            db.Update(vehicle);
+            await db.SaveChangesAsync();
+
+            var vehicleDTO = mapper.Map<Vehicle, VehicleDTO>(vehicle);
+            return Ok(vehicleDTO);
+        }
     }
 }

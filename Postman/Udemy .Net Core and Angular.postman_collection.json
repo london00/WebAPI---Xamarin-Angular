@@ -68,6 +68,37 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "UpdateVehicle",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"Id\": 1,\n    \"ModelId\": 1,\n    \"IsRegistered\": true,\n    \"Contact\": {\n\t    \"Name\": \"Geiser Aragón 2\",\n\t    \"Phone\": \"9991913233\",\n\t    \"Mail\": \"geiser.aragon@ksquareinc.com\"\n    },\n    \"VehicleFeatures\": [\n    \t{\n    \t\t\"FeatureId\": 1,\n    \t\t\"VehicleId\": 1,\n    \t\t\"Id\": 1\n    \t}\n    ]\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/Vehicles/Update/1",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"Vehicles",
+								"Update",
+								"1"
+							]
+						}
+					},
+					"response": []
 				}
 			]
 		}
