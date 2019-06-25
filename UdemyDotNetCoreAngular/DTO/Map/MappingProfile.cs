@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using System.Collections.ObjectModel;
 using System.Linq;
 using UdemyDotNetCoreAngular.Domain.Models;
 
@@ -12,6 +13,9 @@ namespace UdemyDotNetCoreAngular.DTO.Maps
             CreateMap<Model, ModelDTO>();
             CreateMap<Make, MakeDTO>();
             CreateMap<Feature, FeatureDTO>();
+            CreateMap<Vehicle, VehicleDTO>()
+                .ForMember(d => d.Contact, configMenber => configMenber.MapFrom(o => new VehicleDTO.ContactInfo { Name = o.ContactName, Mail = o.ContactMail, Phone = o.ContactPhone }))
+                .ForMember(d => d.VehicleFeatures, configMember => configMember.MapFrom(o => o.VehicleFeatures.Select(x => x.FeatureId )));
 
             // DTO to Domain
             CreateMap<VehicleDTO, Vehicle>()

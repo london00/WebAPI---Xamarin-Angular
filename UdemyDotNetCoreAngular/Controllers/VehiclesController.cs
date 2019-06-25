@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
@@ -18,8 +19,21 @@ namespace UdemyDotNetCoreAngular.Controllers
         [HttpPost]
         public async Task<IActionResult> Save([FromBody] VehicleDTO model)
         {
+            if (model.Id != 0)
+            {
+                ModelState.AddModelError("id", "Id can´t be assigned manually");
+            }
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
             var vehicle = mapper.Map<VehicleDTO, Vehicle>(model);
-            return Ok(vehicle);
+            vehicle.LastUpdate = DateTime.Now;
+            db.Vehicles.Add(vehicle);
+            await db.SaveChangesAsync();
+            var vehicleDTO = mapper.Map<Vehicle, VehicleDTO>(vehicle);
+            return Ok(vehicleDTO);
         }
     }
 }

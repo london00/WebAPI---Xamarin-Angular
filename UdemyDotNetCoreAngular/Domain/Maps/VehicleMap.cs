@@ -13,7 +13,7 @@ namespace UdemyDotNetCoreAngular.Domain.Maps
             builder.Property(x => x.ContactName).HasMaxLength(100).IsRequired();
             builder.Property(x => x.ContactMail).HasMaxLength(50).IsRequired();
             builder.Property(x => x.ContactPhone).HasMaxLength(10).IsRequired();
-            builder.HasOne(x => x.Model).WithMany(x => x.Vehicles);
+            builder.HasOne(x => x.Model).WithMany(x => x.Vehicles).HasForeignKey(x=> x.ModelId);
             builder.HasMany(x => x.VehicleFeatures).WithOne(x => x.Vehicle);
         }
     }
