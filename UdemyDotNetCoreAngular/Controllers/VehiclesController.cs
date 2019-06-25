@@ -54,12 +54,48 @@ namespace UdemyDotNetCoreAngular.Controllers
                 return BadRequest(ModelState);
             }
 
-            var vehicle = await db.Vehicles.Include(x => x.VehicleFeatures).SingleOrDefaultAsync(x => x.Id == id);
+            var vehicle = await db.Vehicles.Include(x => x.VehicleFeatures).FirstOrDefaultAsync(x => x.Id == id);
+
+            if (vehicle == null)
+            {
+                return NotFound($"Vehicle with id {id} has not been found");
+            }
+
             mapper.Map<VehicleDTO, Vehicle>(model, vehicle);
             vehicle.LastUpdate = DateTime.Now;
 
             db.Update(vehicle);
             await db.SaveChangesAsync();
+
+            var vehicleDTO = mapper.Map<Vehicle, VehicleDTO>(vehicle);
+            return Ok(vehicleDTO);
+        }
+
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> Delete(int id)
+        {
+            var vehicle = await db.Vehicles.FindAsync(id);
+
+            if (vehicle == null)
+            {
+                return NotFound($"Vehicle with id {id} has not been found");
+            }
+
+            db.Remove(vehicle);
+            await db.SaveChangesAsync();
+
+            return Ok(id);
+        }
+
+        [HttpGet("{id}")]
+        public async Task<IActionResult> Get(int id)
+        {
+            var vehicle = await db.Vehicles.Include(x => x.VehicleFeatures).FirstOrDefaultAsync(x => x.Id == id);
+
+            if (vehicle == null)
+            {
+                return NotFound($"Vehicle with id {id} has not been found");
+            }
 
             var vehicleDTO = mapper.Map<Vehicle, VehicleDTO>(vehicle);
             return Ok(vehicleDTO);

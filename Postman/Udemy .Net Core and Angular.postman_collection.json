@@ -99,6 +99,54 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "DeleteVehicle",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/Vehicles/Update/1",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"Vehicles",
+								"Update",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetVehicle",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/Vehicles/Update/1",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"Vehicles",
+								"Update",
+								"1"
+							]
+						}
+					},
+					"response": []
 				}
 			]
 		}
