@@ -9,7 +9,7 @@ namespace UdemyDotNetCoreAngular.Domain.Maps
         public void Configure(EntityTypeBuilder<Feature> builder)
         {
             builder.Property(x => x.Name).IsRequired(true).HasMaxLength(255);
-            builder.HasOne(x => x.Model).WithMany(x => x.Features).HasForeignKey(x => x.ModelId);
+            builder.HasOne(x => x.Model).WithMany(x => x.Features).HasForeignKey(x => x.ModelId).OnDelete(DeleteBehavior.Restrict);
         }
     }
 }

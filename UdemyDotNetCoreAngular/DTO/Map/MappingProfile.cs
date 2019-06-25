@@ -24,7 +24,8 @@ namespace UdemyDotNetCoreAngular.DTO.Maps
                 .ForMember(d => d.ContactName, configMenber => configMenber.MapFrom(o => o.Contact.Name))
                 .ForMember(d => d.ContactMail, configMenber => configMenber.MapFrom(o => o.Contact.Mail))
                 .ForMember(d => d.ContactPhone, configMenber => configMenber.MapFrom(o => o.Contact.Phone))
-                .BeforeMap((vr, v) => // Collection when parsed
+                .ForMember(d => d.VehicleFeatures, configMember => configMember.Ignore())
+                .AfterMap((vr, v) => // Collection when parsed
                 {
                     #region If feature has been removed
 

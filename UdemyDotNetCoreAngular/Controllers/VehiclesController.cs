@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
@@ -39,12 +40,21 @@ namespace UdemyDotNetCoreAngular.Controllers
         [HttpPut("{id}")]
         public async Task<IActionResult> Update(int id, [FromBody] VehicleDTO model)
         {
+            if (model.Id != id)
+            {
+                ModelState.AddModelError("Id", $"Vehicle id doesn´t match: {id} != {model.Id}");
+            }
+            if (model.VehicleFeatures.Any(x => x.VehicleId != id))
+            {
+                ModelState.AddModelError("Id", $"Some features doesn´t match with the current vehicle: {id} != {string.Join(",", model.VehicleFeatures.Select(x => x.VehicleId))}");
+            }
+
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            var vehicle = await db.Vehicles.Include(x => x.VehicleFeatures).AsNoTracking().SingleOrDefaultAsync(x => x.Id == id);
+            var vehicle = await db.Vehicles.Include(x => x.VehicleFeatures).SingleOrDefaultAsync(x => x.Id == id);
             mapper.Map<VehicleDTO, Vehicle>(model, vehicle);
             vehicle.LastUpdate = DateTime.Now;
 
