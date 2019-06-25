@@ -8,6 +8,7 @@ namespace UdemyDotNetCoreAngular.Domain.Models
         public Model()
         {
             Features = new Collection<Feature>();
+            Vehicles = new Collection<Vehicle>();
         }
 
         public int Id { get; set; }
@@ -16,5 +17,6 @@ namespace UdemyDotNetCoreAngular.Domain.Models
 
         public Make Make { get; set; }
         public virtual ICollection<Feature> Features { get; set; }
+        public ICollection<Vehicle> Vehicles { get; set; }
     }
 }

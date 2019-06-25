@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using UdemyDotNetCoreAngular.Domain;
 
 namespace UdemyDotNetCoreAngular.Migrations
 {
     [DbContext(typeof(VegaDBContext))]
-    partial class VegaDBContextModelSnapshot : ModelSnapshot
+    [Migration("20190625155118_Add unike key to vehicle feature table")]
+    partial class Addunikekeytovehiclefeaturetable
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -128,7 +130,7 @@ namespace UdemyDotNetCoreAngular.Migrations
                     b.HasOne("UdemyDotNetCoreAngular.Domain.Models.Model", "Model")
                         .WithMany("Features")
                         .HasForeignKey("ModelId")
-                        .OnDelete(DeleteBehavior.Restrict);
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("UdemyDotNetCoreAngular.Domain.Models.Model", b =>
@@ -152,12 +154,12 @@ namespace UdemyDotNetCoreAngular.Migrations
                     b.HasOne("UdemyDotNetCoreAngular.Domain.Models.Feature", "Feature")
                         .WithMany("VehicleFeatures")
                         .HasForeignKey("FeatureId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .OnDelete(DeleteBehavior.Restrict);
 
                     b.HasOne("UdemyDotNetCoreAngular.Domain.Models.Vehicle", "Vehicle")
                         .WithMany("VehicleFeatures")
                         .HasForeignKey("VehicleId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .OnDelete(DeleteBehavior.Restrict);
                 });
 #pragma warning restore 612, 618
         }

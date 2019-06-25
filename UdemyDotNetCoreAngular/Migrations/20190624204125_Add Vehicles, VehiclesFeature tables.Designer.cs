@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using UdemyDotNetCoreAngular.Domain;
 
 namespace UdemyDotNetCoreAngular.Migrations
 {
     [DbContext(typeof(VegaDBContext))]
-    partial class VegaDBContextModelSnapshot : ModelSnapshot
+    [Migration("20190624204125_Add Vehicles, VehiclesFeature tables")]
+    partial class AddVehiclesVehiclesFeaturetables
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -115,10 +117,9 @@ namespace UdemyDotNetCoreAngular.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("VehicleId");
+                    b.HasIndex("FeatureId");
 
-                    b.HasIndex("FeatureId", "VehicleId")
-                        .IsUnique();
+                    b.HasIndex("VehicleId");
 
                     b.ToTable("VehicleFeatures");
                 });
@@ -128,7 +129,7 @@ namespace UdemyDotNetCoreAngular.Migrations
                     b.HasOne("UdemyDotNetCoreAngular.Domain.Models.Model", "Model")
                         .WithMany("Features")
                         .HasForeignKey("ModelId")
-                        .OnDelete(DeleteBehavior.Restrict);
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("UdemyDotNetCoreAngular.Domain.Models.Model", b =>
@@ -152,12 +153,12 @@ namespace UdemyDotNetCoreAngular.Migrations
                     b.HasOne("UdemyDotNetCoreAngular.Domain.Models.Feature", "Feature")
                         .WithMany("VehicleFeatures")
                         .HasForeignKey("FeatureId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .OnDelete(DeleteBehavior.Restrict);
 
                     b.HasOne("UdemyDotNetCoreAngular.Domain.Models.Vehicle", "Vehicle")
                         .WithMany("VehicleFeatures")
                         .HasForeignKey("VehicleId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .OnDelete(DeleteBehavior.Restrict);
                 });
 #pragma warning restore 612, 618
         }
