@@ -34,7 +34,8 @@ namespace UdemyDotNetCoreAngular.Controllers
             var vehicle = mapper.Map<Save_VehicleDTO, Vehicle>(model);
             vehicleDAL.AddVehicle(vehicle);
             dataLayerContext.CompleteChanges();
-            var vehicleDTO = mapper.Map<Vehicle, Save_VehicleDTO>(vehicle);
+            vehicle = await vehicleDAL.GetVehicleById(vehicle.Id);
+            var vehicleDTO = mapper.Map<Vehicle, VehicleDTO>(vehicle);
             return Ok(vehicleDTO);
         }
 
@@ -67,7 +68,8 @@ namespace UdemyDotNetCoreAngular.Controllers
             vehicleDAL.UpdateVehicle(vehicle);
             dataLayerContext.CompleteChanges();
 
-            var vehicleDTO = mapper.Map<Vehicle, Save_VehicleDTO>(vehicle);
+            vehicle = await vehicleDAL.GetVehicleById(vehicle.Id);
+            var vehicleDTO = mapper.Map<Vehicle, VehicleDTO>(vehicle);
             return Ok(vehicleDTO);
         }
 
