@@ -31,10 +31,9 @@
     <None Remove="$(SpaRoot)**" />
     <None Include="$(SpaRoot)**" Exclude="$(SpaRoot)node_modules\**" />
   </ItemGroup>
-
   <ItemGroup>
-    <Compile Remove="Migrations\20190620172048_InitialModel.cs" />
-    <Compile Remove="Migrations\20190620172048_InitialModel.Designer.cs" />
+    <ProjectReference Include="..\Domain\UdemyDotNetCoreAngular.Domain.csproj" />
+    <ProjectReference Include="..\UdemyDotNetCoreAngular.DAL\UdemyDotNetCoreAngular.DAL.csproj" />
   </ItemGroup>
 
   <Target Name="DebugEnsureNodeEnv" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And !Exists('$(SpaRoot)node_modules') ">

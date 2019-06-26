@@ -1,13 +1,13 @@
 using AutoMapper;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.SpaServices.AngularCli;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Newtonsoft.Json.Serialization;
+using UdemyDotNetCoreAngular.DAL;
 using UdemyDotNetCoreAngular.Domain;
 
 namespace UdemyDotNetCoreAngular
@@ -24,10 +24,19 @@ namespace UdemyDotNetCoreAngular
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<VegaDBContext>(c=> c.UseSqlServer(Configuration.GetConnectionString("Default")));
+            #region Dependency Injection
+            services.AddScoped<IVehicleDAL, VehicleDAL>();
+            services.AddScoped<IMakeDAL, MakeDAL>();
+            services.AddScoped<IVehicleDAL, VehicleDAL>();
+            services.AddScoped<IFeatureDAL, FeatureDAL>();
+            services.AddScoped<IContext, DAL.Context>();
+            #endregion
+
+            services.AddDbContext<VegaDBContext>(c => c.UseSqlServer(Configuration.GetConnectionString("Default")));
             services.AddMvc()
                     .SetCompatibilityVersion(CompatibilityVersion.Version_2_2)
-                    .AddJsonOptions(options => {
+                    .AddJsonOptions(options =>
+                    {
                         options.SerializerSettings.ContractResolver = new DefaultContractResolver();
                     });
 

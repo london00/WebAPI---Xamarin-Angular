@@ -1,11 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using UdemyDotNetCoreAngular.Domain;
+using UdemyDotNetCoreAngular.DAL;
 using UdemyDotNetCoreAngular.Domain.Models;
 using UdemyDotNetCoreAngular.DTO;
 
@@ -13,8 +10,13 @@ namespace UdemyDotNetCoreAngular.Controllers
 {
     public class VehiclesController : BaseController
     {
-        public VehiclesController(VegaDBContext db, IMapper mapper) : base(db, mapper)
+        private readonly IVehicleDAL vehicleDAL;
+        private readonly IContext dataLayerContext;
+
+        public VehiclesController(IMapper mapper, IVehicleDAL vehicleDAL, IContext dataLayerContext) : base(mapper)
         {
+            this.vehicleDAL = vehicleDAL;
+            this.dataLayerContext = dataLayerContext;
         }
 
         [HttpPost]
@@ -30,9 +32,8 @@ namespace UdemyDotNetCoreAngular.Controllers
             }
 
             var vehicle = mapper.Map<VehicleDTO, Vehicle>(model);
-            vehicle.LastUpdate = DateTime.Now;
-            db.Vehicles.Add(vehicle);
-            await db.SaveChangesAsync();
+            vehicleDAL.AddVehicle(vehicle);
+            dataLayerContext.CompleteChanges();
             var vehicleDTO = mapper.Map<Vehicle, VehicleDTO>(vehicle);
             return Ok(vehicleDTO);
         }
@@ -54,7 +55,7 @@ namespace UdemyDotNetCoreAngular.Controllers
                 return BadRequest(ModelState);
             }
 
-            var vehicle = await db.Vehicles.Include(x => x.VehicleFeatures).FirstOrDefaultAsync(x => x.Id == id);
+            Vehicle vehicle = await vehicleDAL.GetVehicleById(id);
 
             if (vehicle == null)
             {
@@ -62,10 +63,9 @@ namespace UdemyDotNetCoreAngular.Controllers
             }
 
             mapper.Map<VehicleDTO, Vehicle>(model, vehicle);
-            vehicle.LastUpdate = DateTime.Now;
 
-            db.Update(vehicle);
-            await db.SaveChangesAsync();
+            vehicleDAL.UpdateVehicle(vehicle);
+            dataLayerContext.CompleteChanges();
 
             var vehicleDTO = mapper.Map<Vehicle, VehicleDTO>(vehicle);
             return Ok(vehicleDTO);
@@ -74,15 +74,15 @@ namespace UdemyDotNetCoreAngular.Controllers
         [HttpDelete("{id}")]
         public async Task<IActionResult> Delete(int id)
         {
-            var vehicle = await db.Vehicles.FindAsync(id);
+            var vehicle = await vehicleDAL.GetVehicleById(id);
 
             if (vehicle == null)
             {
                 return NotFound($"Vehicle with id {id} has not been found");
             }
 
-            db.Remove(vehicle);
-            await db.SaveChangesAsync();
+            vehicleDAL.RemoveVehicle(vehicle);
+            dataLayerContext.CompleteChanges();
 
             return Ok(id);
         }
@@ -90,7 +90,7 @@ namespace UdemyDotNetCoreAngular.Controllers
         [HttpGet("{id}")]
         public async Task<IActionResult> Get(int id)
         {
-            var vehicle = await db.Vehicles.Include(x => x.VehicleFeatures).FirstOrDefaultAsync(x => x.Id == id);
+            var vehicle = await vehicleDAL.GetVehicleById(id);
 
             if (vehicle == null)
             {
