@@ -6,6 +6,6 @@ namespace UdemyDotNetCoreAngular.DTO
     {
         public int Id { get; set; }
         public string Name { get; set; }
-        public ICollection<ModelDTO> Models { get; set; }
+        public ICollection<KeyValuePairDTO> Models { get; set; }
     }
 }

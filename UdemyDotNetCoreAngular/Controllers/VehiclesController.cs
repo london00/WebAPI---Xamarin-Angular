@@ -20,7 +20,7 @@ namespace UdemyDotNetCoreAngular.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Save([FromBody] VehicleDTO model)
+        public async Task<IActionResult> Save([FromBody] Save_VehicleDTO model)
         {
             if (model.Id != 0)
             {
@@ -31,15 +31,15 @@ namespace UdemyDotNetCoreAngular.Controllers
                 return BadRequest(ModelState);
             }
 
-            var vehicle = mapper.Map<VehicleDTO, Vehicle>(model);
+            var vehicle = mapper.Map<Save_VehicleDTO, Vehicle>(model);
             vehicleDAL.AddVehicle(vehicle);
             dataLayerContext.CompleteChanges();
-            var vehicleDTO = mapper.Map<Vehicle, VehicleDTO>(vehicle);
+            var vehicleDTO = mapper.Map<Vehicle, Save_VehicleDTO>(vehicle);
             return Ok(vehicleDTO);
         }
 
         [HttpPut("{id}")]
-        public async Task<IActionResult> Update(int id, [FromBody] VehicleDTO model)
+        public async Task<IActionResult> Update(int id, [FromBody] Save_VehicleDTO model)
         {
             if (model.Id != id)
             {
@@ -62,12 +62,12 @@ namespace UdemyDotNetCoreAngular.Controllers
                 return NotFound($"Vehicle with id {id} has not been found");
             }
 
-            mapper.Map<VehicleDTO, Vehicle>(model, vehicle);
+            mapper.Map<Save_VehicleDTO, Vehicle>(model, vehicle);
 
             vehicleDAL.UpdateVehicle(vehicle);
             dataLayerContext.CompleteChanges();
 
-            var vehicleDTO = mapper.Map<Vehicle, VehicleDTO>(vehicle);
+            var vehicleDTO = mapper.Map<Vehicle, Save_VehicleDTO>(vehicle);
             return Ok(vehicleDTO);
         }
 

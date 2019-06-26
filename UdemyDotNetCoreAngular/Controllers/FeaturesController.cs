@@ -17,9 +17,9 @@ namespace UdemyDotNetCoreAngular.Controllers
         }
 
         [HttpGet]
-        public async Task<ICollection<FeatureDTO>> GetFeaturesByModel(int ModelId) {
+        public async Task<ICollection<KeyValuePairDTO>> GetFeaturesByModel(int ModelId) {
             List<Feature> features = await featureDAL.GetFeaturesByModel(ModelId);
-            var faturesDTO = mapper.Map<ICollection<Feature>, ICollection<FeatureDTO>>(features);
+            var faturesDTO = mapper.Map<ICollection<Feature>, ICollection<KeyValuePairDTO>>(features);
             return faturesDTO;
         }
     }

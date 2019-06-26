@@ -23,7 +23,12 @@ namespace UdemyDotNetCoreAngular.DAL
 
         public async Task<Vehicle> GetVehicleById(int id)
         {
-            return await db.Vehicles.Include(x => x.VehicleFeatures).FirstOrDefaultAsync(x => x.Id == id);
+            return await db.Vehicles
+                .Include(x => x.VehicleFeatures)
+                    .ThenInclude(x=> x.Feature)
+                .Include(x => x.Model)
+                    .ThenInclude(x => x.Make)
+                .FirstOrDefaultAsync(x => x.Id == id);
         }
 
         public void UpdateVehicle(Vehicle vehicle)
