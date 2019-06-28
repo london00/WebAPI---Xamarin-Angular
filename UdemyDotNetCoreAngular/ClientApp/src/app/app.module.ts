@@ -5,6 +5,9 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 
+// Third party modules
+import { ToastrModule } from 'ngx-toastr'
+
 // Components
 import { AppComponent } from './app.component';
 import { NavMenuComponent } from './nav-menu/nav-menu.component';
@@ -17,6 +20,7 @@ import { VehicleComponent } from "./vehicle/vehicle.component";
 import { MakeService } from './services/makes.service';
 import { FeaturesService } from './services/features.service';
 import { VehicleService } from './services/vehicle.service';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -37,6 +41,8 @@ import { VehicleService } from './services/vehicle.service';
       { path: 'fetch-data', component: FetchDataComponent },
       { path: 'vehicle', component: VehicleComponent },
     ]),
+    ToastrModule.forRoot(), // https://www.npmjs.com/package/ngx-toastr
+    BrowserAnimationsModule
   ],
   providers: [
     MakeService, FeaturesService, VehicleService

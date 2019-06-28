@@ -2,9 +2,8 @@ import { Component } from '@angular/core';
 import { MakeService } from '../services/makes.service';
 import { FeaturesService } from '../services/features.service';
 import { MakeDTO, ModelDTO, FeatureDTO, Save_VehicleDTO, VehicleFeatureDTO } from '../DTO/ModelContext';
-import { EventListener } from '@angular/core/src/debug/debug_node';
 import { VehicleService } from '../services/vehicle.service';
-import { debug } from 'util';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-vehicle',
@@ -12,18 +11,21 @@ import { debug } from 'util';
   styleUrls: ['./vehicle.component.css']
 })
 export class VehicleComponent {
+  private featuresService: FeaturesService;
+  private vehicleService: VehicleService;
+  private toastyService: ToastrService;
+  private makeService: MakeService;
+
   public vehicle: Save_VehicleDTO;
   public makes: MakeDTO[];
-  public makeService: MakeService;
-  public featuresService: FeaturesService;
-  public vehicleService: VehicleService;
   public models: ModelDTO[];
   public features: FeatureDTO[];
 
-  constructor(makeService: MakeService, featuresService: FeaturesService, vehicleService: VehicleService) {
+  constructor(makeService: MakeService, featuresService: FeaturesService, vehicleService: VehicleService, toastyService: ToastrService) {
     this.makeService = makeService;
     this.featuresService = featuresService;
     this.vehicleService = vehicleService;
+    this.toastyService = toastyService;
     this.makes = new Array<MakeDTO>();
     this.features = new Array<FeatureDTO>();
     this.vehicle = new Save_VehicleDTO();
@@ -91,10 +93,15 @@ export class VehicleComponent {
   }
 
   Sumbit() {
-    debugger;
     this.vehicleService.SaveVehicle(this.vehicle).subscribe(
-      data => console.log("Success!", data),
-      error => console.log("Error!", error)
+      data => {
+        this.toastyService.success("Vehicle has been saved", "Success!!");
+        console.log(data);
+      },
+      error => {
+        this.toastyService.success("Check console for more details", "Error!!");
+        console.error(error);
+      }
     );
   }
 }
