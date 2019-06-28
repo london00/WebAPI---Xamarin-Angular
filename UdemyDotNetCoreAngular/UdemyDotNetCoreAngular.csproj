@@ -3,6 +3,7 @@
   <PropertyGroup>
     <TargetFramework>netcoreapp2.2</TargetFramework>
     <TypeScriptCompileBlocked>true</TypeScriptCompileBlocked>
+	<TypeScriptExperimentalDecorators>true</TypeScriptExperimentalDecorators>
     <TypeScriptToolsVersion>Latest</TypeScriptToolsVersion>
     <IsPackable>false</IsPackable>
     <SpaRoot>ClientApp\</SpaRoot>
@@ -11,7 +12,11 @@
     <!-- Set this to true if you enable server-side prerendering -->
     <BuildServerSideRenderer>false</BuildServerSideRenderer>
   </PropertyGroup>
-
+  <ItemGroup>
+    <Content Include="ClientApp\tsconfig.json">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>	
   <ItemGroup>
     <PackageReference Include="AutoMapper" Version="8.1.1" />
     <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="6.1.1" />
@@ -32,8 +37,14 @@
     <None Include="$(SpaRoot)**" Exclude="$(SpaRoot)node_modules\**" />
   </ItemGroup>
   <ItemGroup>
+    <None Remove="ClientApp\src\app\app.error-handler.ts" />
+  </ItemGroup>
+  <ItemGroup>
     <ProjectReference Include="..\Domain\UdemyDotNetCoreAngular.Domain.csproj" />
     <ProjectReference Include="..\UdemyDotNetCoreAngular.DAL\UdemyDotNetCoreAngular.DAL.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <TypeScriptCompile Include="ClientApp\src\app\app.error-handler.ts" />
   </ItemGroup>
 
   <Target Name="DebugEnsureNodeEnv" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And !Exists('$(SpaRoot)node_modules') ">

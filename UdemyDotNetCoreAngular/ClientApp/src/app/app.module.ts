@@ -1,6 +1,6 @@
 // NG Modules
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, ErrorHandler } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
@@ -21,6 +21,7 @@ import { MakeService } from './services/makes.service';
 import { FeaturesService } from './services/features.service';
 import { VehicleService } from './services/vehicle.service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { AppErrorHandler } from './app.error-handler';
 
 @NgModule({
   declarations: [
@@ -45,7 +46,13 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     BrowserAnimationsModule
   ],
   providers: [
-    MakeService, FeaturesService, VehicleService
+    MakeService,
+    FeaturesService,
+    VehicleService,
+    {
+      provide: ErrorHandler,
+      useClass: AppErrorHandler
+    }
   ],
   bootstrap: [AppComponent]
 })

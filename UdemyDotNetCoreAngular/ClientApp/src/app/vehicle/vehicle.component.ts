@@ -99,7 +99,7 @@ export class VehicleComponent {
         console.log(data);
       },
       error => {
-        this.toastyService.success("Check console for more details", "Error!!");
+        this.toastyService.error("Check console for more details", "Error!!");
         console.error(error);
       }
     );
