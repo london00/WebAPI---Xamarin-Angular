@@ -1,9 +1,12 @@
 // NG Modules
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, ErrorHandler } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
+
+// Third party modules
+import { ToastrModule } from 'ngx-toastr'
 
 // Components
 import { AppComponent } from './app.component';
@@ -16,6 +19,9 @@ import { VehicleComponent } from "./vehicle/vehicle.component";
 // Providers
 import { MakeService } from './services/makes.service';
 import { FeaturesService } from './services/features.service';
+import { VehicleService } from './services/vehicle.service';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { AppErrorHandler } from './app.error-handler';
 
 @NgModule({
   declarations: [
@@ -34,11 +40,20 @@ import { FeaturesService } from './services/features.service';
       { path: '', component: HomeComponent, pathMatch: 'full' },
       { path: 'counter', component: CounterComponent },
       { path: 'fetch-data', component: FetchDataComponent },
-      { path: 'vehicle', component: VehicleComponent },
+      { path: 'vehicle/new', component: VehicleComponent },
+      { path: 'vehicle/:id', component: VehicleComponent }
     ]),
+    ToastrModule.forRoot(), // https://www.npmjs.com/package/ngx-toastr
+    BrowserAnimationsModule
   ],
   providers: [
-    MakeService, FeaturesService
+    MakeService,
+    FeaturesService,
+    VehicleService,
+    {
+      provide: ErrorHandler,
+      useClass: AppErrorHandler
+    }
   ],
   bootstrap: [AppComponent]
 })

@@ -1,6 +1,5 @@
 ﻿using AutoMapper;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.Linq;
 using UdemyDotNetCoreAngular.Domain.Models;
 
@@ -11,16 +10,21 @@ namespace UdemyDotNetCoreAngular.DTO.Maps
         public MappingProfile()
         {
             // Domain to DTO
-            CreateMap<Model, ModelDTO>();
+            CreateMap<Model, KeyValuePairDTO>();
             CreateMap<Make, MakeDTO>();
             CreateMap<VehicleFeature, VehicleFeatureDTO>();
-            CreateMap<Feature, FeatureDTO>();
+            CreateMap<Feature, KeyValuePairDTO>();
+            CreateMap<Vehicle, Save_VehicleDTO>()
+                .ForMember(d => d.Contact, configMenber => configMenber.MapFrom(o => new Save_VehicleDTO.ContactInfo { Name = o.ContactName, Mail = o.ContactMail, Phone = o.ContactPhone }));
             CreateMap<Vehicle, VehicleDTO>()
-                .ForMember(d => d.Contact, configMenber => configMenber.MapFrom(o => new VehicleDTO.ContactInfo { Name = o.ContactName, Mail = o.ContactMail, Phone = o.ContactPhone }));
+                .ForMember(d => d.Contact, configMenber => configMenber.MapFrom(o => new Save_VehicleDTO.ContactInfo { Name = o.ContactName, Mail = o.ContactMail, Phone = o.ContactPhone }))
+                .ForMember(d => d.Model, configMember => configMember.MapFrom(o => new KeyValuePairDTO { Id = o.ModelId, Name = o.Model.Name }))
+                .ForMember(d => d.Make, configMember => configMember.MapFrom(o => new KeyValuePairDTO { Id = o.Model.MakeId, Name = o.Model.Make.Name }))
+                .ForMember(d => d.VehicleFeatures, configMember => configMember.MapFrom(o => o.VehicleFeatures.Select(vf => new KeyValuePairDTO { Id = vf.Feature.Id, Name = vf.Feature.Name })));
 
             // DTO to Domain
             CreateMap<VehicleFeatureDTO, VehicleFeature>();
-            CreateMap<VehicleDTO, Vehicle>()
+            CreateMap<Save_VehicleDTO, Vehicle>()
                 .ForMember(d => d.ContactName, configMenber => configMenber.MapFrom(o => o.Contact.Name))
                 .ForMember(d => d.ContactMail, configMenber => configMenber.MapFrom(o => o.Contact.Mail))
                 .ForMember(d => d.ContactPhone, configMenber => configMenber.MapFrom(o => o.Contact.Phone))

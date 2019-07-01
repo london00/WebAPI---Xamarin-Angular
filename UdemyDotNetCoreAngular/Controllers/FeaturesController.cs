@@ -1,10 +1,8 @@
 ﻿using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using UdemyDotNetCoreAngular.Domain;
+using UdemyDotNetCoreAngular.DAL;
 using UdemyDotNetCoreAngular.Domain.Models;
 using UdemyDotNetCoreAngular.DTO;
 
@@ -12,14 +10,16 @@ namespace UdemyDotNetCoreAngular.Controllers
 {
     public class FeaturesController : BaseController
     {
-        public FeaturesController(VegaDBContext db, IMapper mapper) : base(db, mapper)
+        private readonly IFeatureDAL featureDAL;
+        public FeaturesController(IMapper mapper, IFeatureDAL featureDAL) : base(mapper)
         {
+            this.featureDAL = featureDAL;
         }
 
         [HttpGet]
-        public async Task<ICollection<FeatureDTO>> GetFeaturesByModel(int ModelId) {
-            var features = await db.Features.Include(x=>x.Model).Where(f => f.ModelId == ModelId).ToListAsync();
-            var faturesDTO = mapper.Map<ICollection<Feature>, ICollection<FeatureDTO>>(features);
+        public async Task<ICollection<KeyValuePairDTO>> GetFeaturesByModel(int ModelId) {
+            List<Feature> features = await featureDAL.GetFeaturesByModel(ModelId);
+            var faturesDTO = mapper.Map<ICollection<Feature>, ICollection<KeyValuePairDTO>>(features);
             return faturesDTO;
         }
     }
