@@ -40,7 +40,8 @@ import { AppErrorHandler } from './app.error-handler';
       { path: '', component: HomeComponent, pathMatch: 'full' },
       { path: 'counter', component: CounterComponent },
       { path: 'fetch-data', component: FetchDataComponent },
-      { path: 'vehicle', component: VehicleComponent },
+      { path: 'vehicle/new', component: VehicleComponent },
+      { path: 'vehicle/:id', component: VehicleComponent }
     ]),
     ToastrModule.forRoot(), // https://www.npmjs.com/package/ngx-toastr
     BrowserAnimationsModule

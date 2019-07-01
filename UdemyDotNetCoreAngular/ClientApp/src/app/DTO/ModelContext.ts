@@ -1,15 +1,10 @@
 export interface MakeDTO {
   Id: number;
   Name: string;
-  Models: ModelDTO[];
+  Models: KeyValuePairDTO[];
 }
 
-export interface ModelDTO {
-  Id: number;
-  Name: string;
-}
-
-export interface FeatureDTO {
+export interface KeyValuePairDTO {
   Id: number;
   Name: string;
 }
@@ -41,4 +36,18 @@ export class VehicleFeatureDTO {
   Id: number;
   FeatureId: number;
   VehicleId: number;
+}
+
+export class VehicleDTO {
+  constructor() {
+    this.VehicleFeatures = new Array<KeyValuePairDTO>();
+  }
+
+  public Id: number;
+  public IsRegistered: boolean;
+  public Contact: ContactInfo;
+  public LastUpdate: string;
+  public Model: KeyValuePairDTO;
+  public Make: KeyValuePairDTO;
+  public VehicleFeatures: Array<KeyValuePairDTO>;
 }

@@ -1,7 +1,7 @@
 import { Injectable, Inject } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { FeatureDTO } from '../DTO/ModelContext';
+import { VehicleFeatureDTO } from '../DTO/ModelContext';
 
 @Injectable()
 export class FeaturesService {
@@ -13,8 +13,8 @@ export class FeaturesService {
     this.baseUrl = baseUrl;
   }
 
-  public GetFeaturesByModel(ModelId: number): Observable<FeatureDTO[]> {
+  public GetFeaturesByModel(ModelId: number): Observable<VehicleFeatureDTO[]> {
     let params = new HttpParams().set("ModelId", ModelId.toString());
-    return this.http.get<FeatureDTO[]>(this.baseUrl + 'api/Features/GetFeaturesByModel', { params: params });
+    return this.http.get<VehicleFeatureDTO[]>(this.baseUrl + 'api/Features/GetFeaturesByModel', { params: params });
   }
 }
