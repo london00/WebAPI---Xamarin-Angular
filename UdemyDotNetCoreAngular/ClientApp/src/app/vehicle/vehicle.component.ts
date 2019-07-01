@@ -171,4 +171,14 @@ export class VehicleComponent {
       );
     }
   }
+
+  Delete() {
+    if (confirm("Are you sure?")) {
+      this.vehicleService.Delete(this.vehicle.Id).subscribe(
+        data => {
+          this.toastyService.success("Vehicle has been deleted", "Success!!");
+          this.router.navigate(["/"]);
+      });
+    }
+  }
 }

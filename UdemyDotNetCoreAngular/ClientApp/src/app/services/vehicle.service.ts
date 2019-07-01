@@ -24,4 +24,8 @@ export class VehicleService {
   public GetVehicle(id: number): Observable<VehicleDTO> {
     return this.http.get<VehicleDTO>(this.baseUrl + 'api/Vehicles/get/' + id);
   }
+
+  public Delete(Id: number) {
+    return this.http.delete(this.baseUrl + 'api/Vehicles/Delete/' + Id);
+  }
 }
