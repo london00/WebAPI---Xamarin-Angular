@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using UdemyDotNetCoreAngular.Domain;
 using UdemyDotNetCoreAngular.Domain.Models;
@@ -25,7 +26,7 @@ namespace UdemyDotNetCoreAngular.DAL
         {
             return await db.Vehicles
                 .Include(x => x.VehicleFeatures)
-                    .ThenInclude(x=> x.Feature)
+                    .ThenInclude(x => x.Feature)
                 .Include(x => x.Model)
                     .ThenInclude(x => x.Make)
                 .FirstOrDefaultAsync(x => x.Id == id);
@@ -40,6 +41,16 @@ namespace UdemyDotNetCoreAngular.DAL
         public void RemoveVehicle(Vehicle vehicle)
         {
             db.Remove(vehicle);
+        }
+
+        public async Task<List<Vehicle>> GetVehicles()
+        {
+            return await db.Vehicles
+                .Include(x => x.VehicleFeatures)
+                    .ThenInclude(x => x.Feature)
+                .Include(x => x.Model)
+                    .ThenInclude(x => x.Make)
+                .ToListAsync();
         }
     }
 }

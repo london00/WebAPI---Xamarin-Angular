@@ -1,4 +1,6 @@
-﻿using System.Linq;
+﻿using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
@@ -100,6 +102,14 @@ namespace UdemyDotNetCoreAngular.Controllers
             }
 
             var vehicleDTO = mapper.Map<Vehicle, VehicleDTO>(vehicle);
+            return Ok(vehicleDTO);
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> Get()
+        {
+            List<Vehicle> vehicles = await vehicleDAL.GetVehicles();
+            var vehicleDTO = mapper.Map<List<Vehicle>, List<VehicleDTO>>(vehicles);
             return Ok(vehicleDTO);
         }
     }
