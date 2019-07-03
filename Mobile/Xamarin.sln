@@ -3,11 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29020.237
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "App1.Android", "App1.Android\App1.Android.csproj", "{67DAED17-7F9A-4D1C-8CB4-3FB994BF11A4}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UdemyCourse.Mobile.Android", "App1.Android\UdemyCourse.Mobile.Android.csproj", "{67DAED17-7F9A-4D1C-8CB4-3FB994BF11A4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "App1.iOS", "App1.iOS\App1.iOS.csproj", "{1A440029-8EE6-4907-9286-E04290B5AA47}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UdemyCourse.Mobile.iOS", "App1.iOS\UdemyCourse.Mobile.iOS.csproj", "{1A440029-8EE6-4907-9286-E04290B5AA47}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "App1", "App1\App1.csproj", "{736EE6B4-DB67-4124-BB51-F7140C4883A4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UdemyCourse.Mobile", "App1\UdemyCourse.Mobile.csproj", "{736EE6B4-DB67-4124-BB51-F7140C4883A4}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UdemyDotNetCoreAngular.DTO", "..\UdemyDotNetCoreAngular.DTO\UdemyDotNetCoreAngular.DTO.csproj", "{6752F46B-BF88-4EB8-B122-1B2D42E7FF3B}"
 EndProject

@@ -5,7 +5,7 @@ using System.Net.Http;
 using UdemyDotNetCoreAngular.DTO;
 using Xamarin.Forms;
 using Json = Newtonsoft.Json.JsonConvert;
-namespace App1
+namespace UdemyCourse.Mobile
 {
     // Learn more about making custom code visible in the Xamarin.Forms previewer
     // by visiting https://aka.ms/xamarinforms-previewer

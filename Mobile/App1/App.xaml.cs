@@ -1,8 +1,6 @@
-﻿using System;
-using Xamarin.Forms;
-using Xamarin.Forms.Xaml;
+﻿using Xamarin.Forms;
 
-namespace App1
+namespace UdemyCourse.Mobile
 {
     public partial class App : Application
     {
