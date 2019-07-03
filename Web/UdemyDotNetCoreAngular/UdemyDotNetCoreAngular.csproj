@@ -40,9 +40,9 @@
     <None Remove="ClientApp\src\app\app.error-handler.ts" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\UdemyDotNetCoreAngular.DTO\UdemyDotNetCoreAngular.DTO.csproj" />
     <ProjectReference Include="..\Domain\UdemyDotNetCoreAngular.Domain.csproj" />
     <ProjectReference Include="..\UdemyDotNetCoreAngular.DAL\UdemyDotNetCoreAngular.DAL.csproj" />
-    <ProjectReference Include="..\UdemyDotNetCoreAngular.DTO\UdemyDotNetCoreAngular.DTO.csproj" />
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="ClientApp\src\app\app.error-handler.ts" />
