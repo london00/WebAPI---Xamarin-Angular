@@ -1,4 +1,5 @@
-﻿using Xamarin.Forms;
+﻿using UdemyCourse.Mobile.Pages;
+using Xamarin.Forms;
 
 namespace UdemyCourse.Mobile
 {
