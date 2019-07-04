@@ -10,15 +10,11 @@ using Xamarin.Forms.Xaml;
 namespace UdemyCourse.Mobile.Pages.Udemy.Exercises
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class E1_StackLayoutPage : ContentPage
+    public partial class E2_StackLayoutPage : ContentPage
     {
-        public E1_StackLayoutPage()
+        public E2_StackLayoutPage()
         {
             InitializeComponent();
-        }
-
-        private void Button_Clicked(object sender, EventArgs e)
-        {
         }
     }
 }

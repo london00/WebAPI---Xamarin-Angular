@@ -11,7 +11,7 @@ namespace UdemyCourse.Mobile
         {
             InitializeComponent();
 
-            MainPage = new E1_StackLayoutPage();
+            MainPage = new E2_StackLayoutPage();
         }
 
         protected override void OnStart()
