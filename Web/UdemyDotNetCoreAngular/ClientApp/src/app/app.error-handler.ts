@@ -11,9 +11,9 @@ export class AppErrorHandler implements ErrorHandler {
     this.lastError = error;
     this.ngZone.run(
       () => {
+        console.warn(this.lastError);
         if (this.lastError.error) {
           this.toastrService.error(this.lastError.error.title, "Error");
-          console.warn(this.lastError.error);
         }
         else {
           this.toastrService.error("An unexpected error happened", "Error");
