@@ -1,4 +1,5 @@
 ﻿using UdemyCourse.Mobile.Pages;
+using UdemyCourse.Mobile.Pages.Udemy;
 using Xamarin.Forms;
 
 namespace UdemyCourse.Mobile
@@ -9,7 +10,7 @@ namespace UdemyCourse.Mobile
         {
             InitializeComponent();
 
-            MainPage = new MainPage();
+            MainPage = new Exmple1Page();
         }
 
         protected override void OnStart()
