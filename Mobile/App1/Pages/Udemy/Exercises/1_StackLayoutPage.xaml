@@ -4,6 +4,7 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
+             Title="Welcome to Xamarin"
              x:Class="UdemyCourse.Mobile.Pages.Udemy.Exercises.E1_StackLayoutPage">
     <ContentPage.BackgroundColor>#607D8B</ContentPage.BackgroundColor>
     <ContentPage.Content>
