@@ -48,5 +48,8 @@
     <EmbeddedResource Update="Pages\Udemy\Examples\Exmple1Page.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
+    <EmbeddedResource Update="Pages\Udemy\Exercises\E4_AbsoluteLayutPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
   </ItemGroup>
 </Project>

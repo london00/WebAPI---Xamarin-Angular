@@ -24,7 +24,7 @@ namespace UdemyCourse.Mobile.Pages.Udemy.Exercises
 
         private async void Button_Clicked_1(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new E2_GridPage());
+            await Navigation.PushAsync(new E4_AbsoluteLayutPage());
         }
     }
 }
