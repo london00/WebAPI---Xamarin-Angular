@@ -4,7 +4,8 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
-             x:Class="UdemyCourse.Mobile.Pages.Udemy.Exercises.E2_StackLayoutPage">
+             x:Class="UdemyCourse.Mobile.Pages.Udemy.Exercises.E2_StackLayoutPage"
+             Title="Exercise 2 - Stack Layout">
     <ContentPage.Padding>
         0, 20, 0, 0
     </ContentPage.Padding>
@@ -16,7 +17,7 @@
                     HorizontalOptions="StartAndExpand" />
                 <Image HorizontalOptions="FillAndExpand"  Source="http://lorempixel.com/1920/1080/nature/3/" />
                 <StackLayout Orientation="Horizontal" Padding="0, 10, 0, 20">
-                    <Label  Text="Like" TextColor="#1E88E5" Margin="5, 0, 10, 5"/>
+                    <Label  Text="Like" TextColor="#1E88E5" Margin="5, 0, 10, 5"  x:Name="lblLike"  />
                     <Label Text="Comment" TextColor="#1E88E5" Margin="5, 0, 10, 5"/>
                     <Label Text="Share" TextColor="#1E88E5" Margin="5, 0, 10, 5"/>
                 </StackLayout>

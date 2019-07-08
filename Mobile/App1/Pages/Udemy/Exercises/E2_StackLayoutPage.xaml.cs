@@ -15,6 +15,15 @@ namespace UdemyCourse.Mobile.Pages.Udemy.Exercises
         public E2_StackLayoutPage()
         {
             InitializeComponent();
+            var gesture = new TapGestureRecognizer();
+            gesture.Tapped += OnLabelClicked;
+            gesture.NumberOfTapsRequired = 1;
+            lblLike.GestureRecognizers.Add(gesture);
+        }
+
+        private void OnLabelClicked(object sender, EventArgs e)
+        {
+            DisplayAlert("Done!", "Thanks for give me a like!!", "Cancel");
         }
     }
 }

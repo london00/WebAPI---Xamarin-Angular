@@ -10,9 +10,9 @@ using Xamarin.Forms.Xaml;
 namespace UdemyCourse.Mobile.Pages.Udemy.Examples
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class E2_GridPage : ContentPage
+    public partial class E3_GridPage : ContentPage
     {
-        public E2_GridPage()
+        public E3_GridPage()
         {
             InitializeComponent();
         }

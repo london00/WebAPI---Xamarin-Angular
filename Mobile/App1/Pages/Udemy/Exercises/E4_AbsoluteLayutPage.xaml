@@ -4,7 +4,8 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
-             x:Class="UdemyCourse.Mobile.Pages.Udemy.Exercises.E4_AbsoluteLayutPage">
+             x:Class="UdemyCourse.Mobile.Pages.Udemy.Exercises.E4_AbsoluteLayutPage"
+             Title="Exercise 4 - Absolute Layout">
     <ContentPage.Resources>
         <ResourceDictionary>
             <Style x:Key="TotalLabel" TargetType="Label">
@@ -18,7 +19,7 @@
                 <Setter Property="CornerRadius" Value="20"/>
                 <Setter Property="BackgroundColor" Value="#0097A7"/>
                 <Setter Property="TextColor" Value="#ffffff"/>
-                <Setter Property="FontSize" Value="20"/>
+                <Setter Property="FontSize" Value="18"/>
             </Style>
             <Style TargetType="ContentPage">
                 <Setter Property="BackgroundColor" Value="#f7f7f7" />

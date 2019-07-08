@@ -4,7 +4,8 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
-             x:Class="UdemyCourse.Mobile.Pages.Udemy.Examples.E2_GridPage">
+             x:Class="UdemyCourse.Mobile.Pages.Udemy.Examples.E3_GridPage"
+             Title="Exercise 3 - Grid Layout">
     <ContentPage.BackgroundColor>Black</ContentPage.BackgroundColor>
     <ContentPage.Resources>
         <ResourceDictionary>

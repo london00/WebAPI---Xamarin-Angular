@@ -24,6 +24,12 @@
     <Compile Update="Pages\Udemy\Exercises\E1_StackLayoutPage.xaml.cs">
       <DependentUpon>E1_StackLayoutPage.xaml</DependentUpon>
     </Compile>
+    <Compile Update="Pages\Udemy\Exercises\E3_GridPage.xaml.cs">
+      <DependentUpon>E3_GridPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Pages\Udemy\MenuPage.xaml.cs">
+      <DependentUpon>MenuPage.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
 
   <ItemGroup>
@@ -36,7 +42,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <EmbeddedResource Update="Pages\Udemy\Examples\E2_GridPage.xaml">
+    <EmbeddedResource Update="Pages\Udemy\Exercises\E3_GridPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Pages\Udemy\Exercises\E1_StackLayoutPage.xaml">
@@ -49,6 +55,9 @@
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Pages\Udemy\Exercises\E4_AbsoluteLayutPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Pages\Udemy\MenuPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
   </ItemGroup>
