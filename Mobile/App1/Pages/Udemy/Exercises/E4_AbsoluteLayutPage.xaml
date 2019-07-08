@@ -22,26 +22,32 @@
                 <Setter Property="FontSize" Value="18"/>
             </Style>
             <Style TargetType="ContentPage">
-                <Setter Property="BackgroundColor" Value="#f7f7f7" />
+                <Setter Property="BackgroundColor" Value="Black" />
             </Style>
             <Style TargetType="Label" x:Key="lblQuestion">
                 <Setter Property="FontSize" Value="18"/>
+                <Setter Property="TextColor" Value="White"/>
                 <Setter Property="HorizontalOptions" Value="Center"/>
             </Style>
             <Style TargetType="Label" x:Key="lblVerbiage">
                 <Setter Property="FontSize" Value="16"/>
+                <Setter Property="TextColor" Value="White"/>
                 <Setter Property="HorizontalTextAlignment" Value="Center"/>
             </Style>
         </ResourceDictionary>
     </ContentPage.Resources>
     <ContentPage.Content>
-        <AbsoluteLayout>
-            <Label Text="$11.95" AbsoluteLayout.LayoutBounds="0, .1, 1, .12" AbsoluteLayout.LayoutFlags="All" Style="{StaticResource TotalLabel}" />
-            <Button Text="Add $7.99 Credit" AbsoluteLayout.LayoutBounds=".5, 0.25, 200, 40" AbsoluteLayout.LayoutFlags="PositionProportional" Style="{StaticResource btnAdd}" />
-            <Label Text="Why pay for credit?" AbsoluteLayout.LayoutBounds=".5, 0.50, 1, .2" AbsoluteLayout.LayoutFlags="All" Style="{StaticResource lblQuestion}" />
-            <Label AbsoluteLayout.LayoutBounds=".5, 0.60, .8, .2" AbsoluteLayout.LayoutFlags="All" Style="{StaticResource lblVerbiage}" >
-                Becasue you can reach peole who aren´t on SkyApp by calling mobile and landline numbers, or spending SMS
-            </Label>
-        </AbsoluteLayout>
+        <ScrollView>
+            <AbsoluteLayout>
+                <ActivityIndicator IsRunning="{Binding Source={Reference imgBackground}, Path=IsLoading}" Color="White" AbsoluteLayout.LayoutBounds="0.5, 0.5, 100, 100" AbsoluteLayout.LayoutFlags="All"/>
+                <Image x:Name="imgBackground" Source="http://lorempixel.com/1400/1200/sports/1" Aspect="AspectFill" AbsoluteLayout.LayoutBounds="0, 0, 1, 1" AbsoluteLayout.LayoutFlags="All" />
+                <Label Text="$11.95" AbsoluteLayout.LayoutBounds="0, .1, 1, .12" AbsoluteLayout.LayoutFlags="All" Style="{StaticResource TotalLabel}" />
+                <Button Text="Add $7.99 Credit" AbsoluteLayout.LayoutBounds=".5, 0.25, 200, 40" AbsoluteLayout.LayoutFlags="PositionProportional" Style="{StaticResource btnAdd}" />
+                <Label Text="Why pay for credit?" AbsoluteLayout.LayoutBounds=".5, 0.80, 1, .2" AbsoluteLayout.LayoutFlags="All" Style="{StaticResource lblQuestion}" />
+                <Label AbsoluteLayout.LayoutBounds=".5, 0.90, .8, .2" AbsoluteLayout.LayoutFlags="All" Style="{StaticResource lblVerbiage}" >
+                    Because you can reach people who aren´t on SkyApp by calling mobile and landline numbers, or spending SMS
+                </Label>
+            </AbsoluteLayout>
+        </ScrollView>
     </ContentPage.Content>
 </ContentPage>
