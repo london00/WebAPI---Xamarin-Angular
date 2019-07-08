@@ -1,0 +1,51 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="UdemyCourse.Mobile.Pages.Udemy.Examples.E2_GridPage">
+    <ContentPage.BackgroundColor>Black</ContentPage.BackgroundColor>
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style x:Key="buttonCalculator" TargetType="Button">
+                <Setter Property="CornerRadius" Value="25" />
+                <Setter Property="BackgroundColor" Value="White" />
+                <Setter Property="FontSize" Value="Title" />
+                <Setter Property="Margin" Value="5" />
+            </Style>
+            <Style x:Key="btnDial" TargetType="Button">
+                <Setter Property="CornerRadius" Value="25" />
+                <Setter Property="BackgroundColor" Value="LimeGreen"/>
+                <Setter Property="Margin" Value="10" />
+                <Setter Property="FontSize" Value="Title"/>
+            </Style>
+            <Style x:Key="displayLabel" TargetType="Label">
+                <Setter Property="TextColor" Value="White"/>
+                <Setter Property="VerticalOptions" Value="Center"/>
+                <Setter Property="HorizontalOptions" Value="Center"/>
+                <Setter Property="FontSize" Value="60"/>
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    
+    <ContentPage.Content>
+        <Grid Margin="30">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="150"/>
+            </Grid.RowDefinitions>
+            <Label Text="1234" Grid.Column="0" Grid.ColumnSpan="3" Style="{StaticResource displayLabel}" />
+            <Button Text="1" Grid.Row="1" Grid.Column="0" Style="{StaticResource buttonCalculator}"  />
+            <Button Text="2" Grid.Row="1" Grid.Column="1" Style="{StaticResource buttonCalculator}" />
+            <Button Text="3" Grid.Row="1" Grid.Column="2" Style="{StaticResource buttonCalculator}" />
+            <Button Text="4" Grid.Row="2" Grid.Column="0" Style="{StaticResource buttonCalculator}" />
+            <Button Text="5" Grid.Row="2" Grid.Column="1" Style="{StaticResource buttonCalculator}" />
+            <Button Text="6" Grid.Row="2" Grid.Column="2" Style="{StaticResource buttonCalculator}" />
+            <Button Text="7" Grid.Row="3" Grid.Column="0" Style="{StaticResource buttonCalculator}" />
+            <Button Text="8" Grid.Row="3" Grid.Column="1" Style="{StaticResource buttonCalculator}" />
+            <Button Text="9" Grid.Row="3" Grid.Column="2" Style="{StaticResource buttonCalculator}" />
+            <Button Text="0" Grid.Row="4" Grid.Column="1" Style="{StaticResource buttonCalculator}" />
+            <Button Text="Dial" Grid.Row="5" Grid.ColumnSpan="3" Style="{StaticResource btnDial}" />
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

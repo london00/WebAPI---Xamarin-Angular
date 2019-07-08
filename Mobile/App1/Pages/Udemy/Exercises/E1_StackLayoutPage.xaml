@@ -23,7 +23,7 @@
                 FontSize="18"
                 />
             <Button Text="Login" CornerRadius="5" BackgroundColor="#263238" TextColor="#FAFAFA" Clicked="Button_Clicked"></Button>
-            <Button Text="Register" CornerRadius="5"  BackgroundColor="#263238" TextColor="#FAFAFA"></Button>
+            <Button Text="Register" CornerRadius="5"  BackgroundColor="#263238" TextColor="#FAFAFA" Clicked="Button_Clicked_1"></Button>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
