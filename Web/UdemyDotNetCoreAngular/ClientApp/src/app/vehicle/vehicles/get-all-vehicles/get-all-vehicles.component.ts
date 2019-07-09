@@ -41,4 +41,11 @@ export class GetAllVehiclesComponent {
       return this.filters.MakeId == 0 || v.Make.Id == this.filters.MakeId
     })
   }
+
+  public resetFilters() {
+    this.vehicles = this.vehiclesComplete;
+    this.filters = {
+      MakeId: 0
+    };
+  }
 }
