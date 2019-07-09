@@ -5,6 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\UdemyDotNetCoreAngular.DTO\UdemyDotNetCoreAngular.DTO.csproj" />
     <ProjectReference Include="..\Domain\UdemyDotNetCoreAngular.Domain.csproj" />
   </ItemGroup>
 

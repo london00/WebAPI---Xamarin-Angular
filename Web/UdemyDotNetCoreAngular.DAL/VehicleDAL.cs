@@ -1,9 +1,11 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using UdemyDotNetCoreAngular.Domain;
 using UdemyDotNetCoreAngular.Domain.Models;
+using UdemyDotNetCoreAngular.DTO.Filters;
 
 namespace UdemyDotNetCoreAngular.DAL
 {
@@ -43,14 +45,26 @@ namespace UdemyDotNetCoreAngular.DAL
             db.Remove(vehicle);
         }
 
-        public async Task<List<Vehicle>> GetVehicles()
+        public async Task<List<Vehicle>> GetVehicles(VehicleFilterDTO filter)
         {
-            return await db.Vehicles
-                .Include(x => x.VehicleFeatures)
-                    .ThenInclude(x => x.Feature)
-                .Include(x => x.Model)
-                    .ThenInclude(x => x.Make)
-                .ToListAsync();
+            var query = db.Vehicles
+               .Include(x => x.VehicleFeatures)
+                   .ThenInclude(x => x.Feature)
+               .Include(x => x.Model)
+                   .ThenInclude(x => x.Make)
+                .AsQueryable();
+
+            if (filter.MakeId.HasValue)
+            {
+                query = query.Where(x => x.Model.MakeId == filter.MakeId);
+            }
+
+            if (filter.ModelId.HasValue)
+            {
+                query = query.Where(x => x.Model.Id == filter.ModelId);
+            }
+
+            return await query.ToListAsync();
         }
     }
 }

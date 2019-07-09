@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using UdemyDotNetCoreAngular.DAL;
 using UdemyDotNetCoreAngular.Domain.Models;
 using UdemyDotNetCoreAngular.DTO;
+using UdemyDotNetCoreAngular.DTO.Filters;
 
 namespace UdemyDotNetCoreAngular.Controllers
 {
@@ -106,9 +107,9 @@ namespace UdemyDotNetCoreAngular.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> Get()
+        public async Task<IActionResult> Get([FromQuery] VehicleFilterDTO filter)
         {
-            List<Vehicle> vehicles = await vehicleDAL.GetVehicles();
+            List<Vehicle> vehicles = await vehicleDAL.GetVehicles(filter);
             var vehicleDTO = mapper.Map<List<Vehicle>, List<VehicleDTO>>(vehicles);
             return Ok(vehicleDTO);
         }
