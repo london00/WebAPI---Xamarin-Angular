@@ -1,7 +1,8 @@
 import { Injectable, Inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { MakeDTO, Save_VehicleDTO, VehicleDTO } from '../DTO/ModelContext';
+import { MakeDTO, Save_VehicleDTO, VehicleDTO, VehicleFilters } from '../DTO/ModelContext';
+import * as $ from 'jquery';
 
 @Injectable()
 export class VehicleService {
@@ -25,8 +26,8 @@ export class VehicleService {
     return this.http.get<VehicleDTO>(this.baseUrl + 'api/Vehicles/get/' + id);
   }
 
-  public GetVehicles(): Observable<Array<VehicleDTO>> {
-    return this.http.get<Array<VehicleDTO>>(this.baseUrl + 'api/Vehicles/get');
+  public GetVehicles(filter: VehicleFilters): Observable<Array<VehicleDTO>> {
+    return this.http.get<Array<VehicleDTO>>(this.baseUrl + 'api/Vehicles/get?' + $.param(filter));
   }
 
   public Delete(Id: number) {

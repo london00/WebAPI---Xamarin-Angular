@@ -2,7 +2,7 @@ import { Component, NgZone, Inject } from '@angular/core';
 import { VehicleService } from '../../../services/vehicle.service';
 import { ToastrService } from 'ngx-toastr';
 import { ActivatedRoute, Router } from '@angular/router';
-import { VehicleDTO, MakeDTO } from '../../../DTO/ModelContext';
+import { VehicleDTO, MakeDTO, VehicleFilters } from '../../../DTO/ModelContext';
 import { MakeService } from '../../../services/makes.service';
 
 @Component({
@@ -13,14 +13,11 @@ import { MakeService } from '../../../services/makes.service';
 /** GetAllVehicles component*/
 export class GetAllVehiclesComponent {
   public vehicles: Array<VehicleDTO>;
-  public vehiclesComplete: Array<VehicleDTO>;
   public makes: MakeDTO[];
-  public filters: any;
+  public filters: VehicleFilters;
   /** GetAllVehicles ctor */
   constructor(private vehicleService: VehicleService, private toastyService: ToastrService, private route: ActivatedRoute, private router: Router, private ngZone: NgZone, private makeService: MakeService) {
-    this.filters = {
-      MakeId: 0
-    };
+    this.filters = new VehicleFilters();
   }
 
   ngOnInit() {
@@ -29,23 +26,22 @@ export class GetAllVehiclesComponent {
         this.makes = response;
       });
 
-    this.vehicleService.GetVehicles().subscribe(
+    this.populateVehicles();
+  }
+
+  public populateVehicles() {
+    this.vehicleService.GetVehicles(this.filters).subscribe(
       (response) => {
         this.vehicles = response;
-        this.vehiclesComplete = response;
       });
   }
 
   public refreshFilters() {
-    this.vehicles = this.vehiclesComplete.filter((v) => {
-      return this.filters.MakeId == 0 || v.Make.Id == this.filters.MakeId
-    })
+    this.populateVehicles();
   }
 
   public resetFilters() {
-    this.vehicles = this.vehiclesComplete;
-    this.filters = {
-      MakeId: 0
-    };
+    this.filters = new VehicleFilters();
+    this.populateVehicles();
   }
 }

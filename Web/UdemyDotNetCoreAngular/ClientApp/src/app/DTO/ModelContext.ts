@@ -51,3 +51,14 @@ export class VehicleDTO {
   public Make: KeyValuePairDTO;
   public VehicleFeatures: Array<KeyValuePairDTO>;
 }
+
+
+export class VehicleFilters {
+  constructor() {
+    this.ModelId = 0;
+    this.MakeId = 0;
+  }
+
+  public ModelId: number;
+  public MakeId: number;
+}

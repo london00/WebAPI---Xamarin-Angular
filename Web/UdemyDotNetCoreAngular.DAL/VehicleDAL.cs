@@ -54,12 +54,12 @@ namespace UdemyDotNetCoreAngular.DAL
                    .ThenInclude(x => x.Make)
                 .AsQueryable();
 
-            if (filter.MakeId.HasValue)
+            if (filter.MakeId.HasValue && filter.MakeId > 0)
             {
                 query = query.Where(x => x.Model.MakeId == filter.MakeId);
             }
 
-            if (filter.ModelId.HasValue)
+            if (filter.ModelId.HasValue && filter.ModelId > 0)
             {
                 query = query.Where(x => x.Model.Id == filter.ModelId);
             }
