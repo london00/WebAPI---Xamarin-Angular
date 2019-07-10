@@ -11,6 +11,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Images\arrow.png" />
     <None Remove="Images\lake.jpg" />
   </ItemGroup>
 
@@ -26,6 +27,10 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\UdemyDotNetCoreAngular.DTO\UdemyDotNetCoreAngular.DTO.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Images\arrow.png" />
   </ItemGroup>
 
   <ItemGroup>
@@ -66,6 +71,9 @@
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Pages\Udemy\Exercises\E4_AbsoluteLayutPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Pages\Udemy\Exercises\E5_ImageGaleryPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Pages\Udemy\MenuPage.xaml">

@@ -20,6 +20,7 @@ namespace UdemyCourse.Mobile.Pages.Udemy
             PagesList.Add("Excercise 2");
             PagesList.Add("Excercise 3");
             PagesList.Add("Excercise 4");
+            PagesList.Add("Excercise 5");
 
             lstPages.ItemsSource = PagesList;
         }
@@ -47,6 +48,9 @@ namespace UdemyCourse.Mobile.Pages.Udemy
                     break;
                 case "Excercise 4":
                     await Navigation.PushAsync(new E4_AbsoluteLayutPage());
+                    break;
+                case "Excercise 5":
+                    await Navigation.PushAsync(new E5_ImageGaleryPage());
                     break;
                 default:
                     break;

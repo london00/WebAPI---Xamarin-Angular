@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             xmlns:local="clr-namespace:UdemyCourse.Mobile.MarkupExtensions"
+             Title="Gallery"
+             x:Class="UdemyCourse.Mobile.Pages.Udemy.Exercises.E5_ImageGaleryPage">
+    <ContentPage.Content>
+        <StackLayout VerticalOptions="Fill" HorizontalOptions="Fill">
+            <Label x:Name="lblIndexImage" />
+            <AbsoluteLayout HorizontalOptions="Fill">
+                <ActivityIndicator IsRunning="{Binding Source={Reference imgBackground}, Path=IsLoading}" Color="Black" AbsoluteLayout.LayoutBounds="0.5, 0.5, 0.1, 0.1" AbsoluteLayout.LayoutFlags="All" />
+                <Image x:Name="imgBackground"  Aspect="AspectFill" AbsoluteLayout.LayoutBounds="0, 0, 1, 1" AbsoluteLayout.LayoutFlags="All" />
+                <ImageButton 
+                    Clicked="Button_Minus_Clicked" 
+                    Source="{local:EmbeddedImage ResourceId=UdemyCourse.Mobile.Images.arrow.png}" 
+                    BorderColor="Transparent"
+                    BackgroundColor="Transparent"
+                    Scale="0.3"
+                    AbsoluteLayout.LayoutBounds="0, 0.5, 0.3, 0.3" 
+                    AbsoluteLayout.LayoutFlags="All" />
+                <ImageButton 
+                    Clicked="Button_Plus_Clicked" 
+                    Source="{local:EmbeddedImage 
+                    ResourceId=UdemyCourse.Mobile.Images.arrow.png}"
+                    BorderColor="Transparent"
+                    BackgroundColor="Transparent"
+                    Scale="0.3"  
+                    Rotation="180"
+                    AbsoluteLayout.LayoutBounds="1, 0.5, 0.3, 0.3"
+                    AbsoluteLayout.LayoutFlags="All" />
+            </AbsoluteLayout>
+            <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
+                <Button x:Name="btnMinus" IsEnabled="False" Clicked="Button_Minus_Clicked" Text="Previous Image"/>
+                <Button Clicked="Button_Plus_Clicked" Text="Next Image"/>
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
