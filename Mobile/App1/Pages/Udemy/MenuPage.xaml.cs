@@ -15,6 +15,7 @@ namespace UdemyCourse.Mobile.Pages.Udemy
             InitializeComponent();
             var PagesList = new List<string>();
             PagesList.Add("Example 1");
+            PagesList.Add("Example 2 - Embeded images");
             PagesList.Add("Excercise 1");
             PagesList.Add("Excercise 2");
             PagesList.Add("Excercise 3");
@@ -31,6 +32,9 @@ namespace UdemyCourse.Mobile.Pages.Udemy
             {
                 case "Example 1":
                     await Navigation.PushAsync(new Exmple1Page());
+                    break;
+                case "Example 2 - Embeded images":
+                    await Navigation.PushAsync(new E2_ImagesPage());
                     break;
                 case "Excercise 1":
                     await Navigation.PushAsync(new E1_StackLayoutPage());
