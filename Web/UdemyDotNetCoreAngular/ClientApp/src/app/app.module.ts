@@ -23,6 +23,7 @@ import { VehicleService } from './services/vehicle.service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppErrorHandler } from './app.error-handler';
 import { GetAllVehiclesComponent } from './vehicle/get-all-vehicles/get-all-vehicles.component';
+import { VehicleDetailsComponent } from './vehicle/vehicle-details/vehicle-details.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { GetAllVehiclesComponent } from './vehicle/get-all-vehicles/get-all-vehi
     CounterComponent,
     FetchDataComponent,
     VehicleComponent,
-    GetAllVehiclesComponent
+    GetAllVehiclesComponent,
+    VehicleDetailsComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -44,7 +46,8 @@ import { GetAllVehiclesComponent } from './vehicle/get-all-vehicles/get-all-vehi
       { path: 'fetch-data', component: FetchDataComponent },
       { path: 'vehicle/new', component: VehicleComponent },
       { path: 'vehicle/:id', component: VehicleComponent },
-      { path: 'vehicles', component: GetAllVehiclesComponent }
+      { path: 'vehicles', component: GetAllVehiclesComponent },
+      { path: 'vehicle/details/:id', component: VehicleDetailsComponent }
     ]),
     ToastrModule.forRoot(), // https://www.npmjs.com/package/ngx-toastr
     BrowserAnimationsModule

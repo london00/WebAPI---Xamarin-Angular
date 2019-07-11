@@ -1,1 +1,16 @@
-﻿<div style="border: 1px solid red">VehicleDetails Component</div>
+<ul class="nav nav-tabs" id="vehicleTabs" role="tablist">
+  <li class="nav-item">
+    <a class="nav-link active" id="vehicleDetails-tab" data-toggle="tab" href="#vehicleDetails" role="tab" aria-controls="vehicleDetails" aria-selected="true">Datails</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" id="vehiclePhoto-tab" data-toggle="tab" href="#vehiclePhoto" role="tab" aria-controls="vehiclePhoto" aria-selected="false">Photos</a>
+  </li>
+</ul>
+<div class="tab-content" id="vehicleTabsContent">
+  <div class="tab-pane fade show active" id="vehicleDetails" role="tabpanel" aria-labelledby="vehicleDetails-tab">
+    Details
+  </div>
+  <div class="tab-pane fade" id="vehiclePhoto" role="tabpanel" aria-labelledby="vehiclePhoto-tab">
+    Photos
+  </div>
+</div>
