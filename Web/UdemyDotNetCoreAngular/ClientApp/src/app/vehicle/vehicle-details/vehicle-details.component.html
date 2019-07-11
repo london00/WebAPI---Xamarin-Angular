@@ -8,7 +8,25 @@
 </ul>
 <div class="tab-content" id="vehicleTabsContent">
   <div class="tab-pane fade show active" id="vehicleDetails" role="tabpanel" aria-labelledby="vehicleDetails-tab">
-    Details
+    <h2>Basics</h2>
+    <ul>
+      <li>Make: {{ vehicle.Make.Name }}</li>
+      <li>Model: {{ vehicle.Model.Name }}</li>
+      <li>Make: {{ vehicle.IsRegistered ? "Yes" : "No" }}</li>
+    </ul>
+    <h2>Features</h2>
+    <ul>
+      <li *ngFor="let feature of vehicle.VehicleFeatures">{{ feature.Name }}</li>
+    </ul>
+    <h2>Contact Info</h2>
+    <ul>
+      <li>Name: {{ vehicle.Contact.Name }}</li>
+      <li>Phone: {{ vehicle.Contact.Phone }}</li>
+      <li>Mail: {{ vehicle.Contact.Mail }}</li>
+    </ul>
+
+    <button class="btn btn-info" routerLink="/vehicle/{{vehicle.Id}}">Edit</button>
+    <button class="btn btn-danger" type="button" (click)="Delete()">Delete</button>
   </div>
   <div class="tab-pane fade" id="vehiclePhoto" role="tabpanel" aria-labelledby="vehiclePhoto-tab">
     Photos
