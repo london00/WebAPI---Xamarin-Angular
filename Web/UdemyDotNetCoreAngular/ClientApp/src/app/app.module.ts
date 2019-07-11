@@ -14,7 +14,7 @@ import { NavMenuComponent } from './nav-menu/nav-menu.component';
 import { HomeComponent } from './home/home.component';
 import { CounterComponent } from './counter/counter.component';
 import { FetchDataComponent } from './fetch-data/fetch-data.component';
-import { VehicleComponent } from "./vehicle/vehicle.component";
+import { VehicleComponent } from "./vehicle/vehicle/vehicle.component";
 
 // Providers
 import { MakeService } from './services/makes.service';
@@ -22,7 +22,7 @@ import { FeaturesService } from './services/features.service';
 import { VehicleService } from './services/vehicle.service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppErrorHandler } from './app.error-handler';
-import { GetAllVehiclesComponent } from './vehicle/vehicles/get-all-vehicles/get-all-vehicles.component';
+import { GetAllVehiclesComponent } from './vehicle/get-all-vehicles/get-all-vehicles.component';
 
 @NgModule({
   declarations: [
