@@ -12,6 +12,7 @@ namespace UdemyDotNetCoreAngular.Domain
         public DbSet<Feature> Features { get; set; }
         public DbSet<Vehicle> Vehicles { get; set; }
         public DbSet<VehicleFeature> VehicleFeatures { get; set; }
+        public DbSet<Photo> Photos { get; set; }
         #endregion
 
         public VegaDBContext(DbContextOptions<VegaDBContext> dbContext): base(dbContext)
@@ -26,6 +27,7 @@ namespace UdemyDotNetCoreAngular.Domain
             modelBuilder.ApplyConfiguration(new ModelMap());
             modelBuilder.ApplyConfiguration(new VehicleMap());
             modelBuilder.ApplyConfiguration(new VehicleFeaturesMap());
+            modelBuilder.ApplyConfiguration(new PhotoMap());
         }
     }
 }
