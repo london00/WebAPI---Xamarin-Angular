@@ -30,6 +30,11 @@ namespace UdemyDotNetCoreAngular.Controllers
         [HttpPost]
         public async Task<ActionResult> Upload([FromRoute] int vehicleId, [FromForm] IFormFile file)
         {
+            if (file == null) return BadRequest("Null file");
+            if (file.Length == 0) return BadRequest("Empty file");
+            if (file.Length > 1024 * 1024 * 10) return BadRequest("File can´t exceed 10mb");
+            if(!new[] { ".jpg", ".png", ".bmp" }.Contains(Path.GetExtension(file.FileName))) return BadRequest("File extension not allowed");
+
             #region Copy photo to Server
             var uploadsFolderPath = Path.Combine(this.host.WebRootPath, "uploads");
             if (!Directory.Exists(uploadsFolderPath))
