@@ -12,11 +12,11 @@ import { HttpErrorResponse } from '@angular/common/http';
 })
 /** VehicleDetails component*/
 export class VehicleDetailsComponent {
-  private vehicle: VehicleDTO;
   private vehicleService: VehicleService;
   private toastyService: ToastrService;
   private route: ActivatedRoute;
   private router: Router;
+  public vehicle: VehicleDTO;
 
     /** VehicleDetails ctor */
   constructor(vehicleService: VehicleService, toastyService: ToastrService, route: ActivatedRoute, router: Router) {
