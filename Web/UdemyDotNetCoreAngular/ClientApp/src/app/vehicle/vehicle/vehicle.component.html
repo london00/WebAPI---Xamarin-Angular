@@ -1,7 +1,4 @@
 <h1>Please complete the vehicle information</h1>
-<p>
-  {{ vehicle | json }}
-</p>
 <form (ngSubmit)="Sumbit()" #f="ngForm">
   <div class="form-group">
     <label for="Make">Make</label>
@@ -61,5 +58,5 @@
     <div class="alert alert-danger" *ngIf="ContactEmail.touched && !ContactEmail.valid">Email is required</div>
   </div>
   <button class="btn btn-primary" [disabled]="!f.valid">Save</button>
-  <button class="btn btn-danger" type="button" *ngIf="vehicle.Id" (click)="Delete()">Delete</button>
+  <button class="btn btn-info" routerLink="/vehicle/details/{{vehicle.Id}}">Return</button>
 </form>

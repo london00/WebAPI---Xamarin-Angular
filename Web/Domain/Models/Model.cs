@@ -15,8 +15,8 @@ namespace UdemyDotNetCoreAngular.Domain.Models
         public string Name { get; set; }
         public int MakeId { get; set; }
 
-        public Make Make { get; set; }
+        public virtual Make Make { get; set; }
         public virtual ICollection<Feature> Features { get; set; }
-        public ICollection<Vehicle> Vehicles { get; set; }
+        public virtual ICollection<Vehicle> Vehicles { get; set; }
     }
 }

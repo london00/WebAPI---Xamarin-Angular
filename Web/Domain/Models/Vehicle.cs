@@ -9,6 +9,7 @@ namespace UdemyDotNetCoreAngular.Domain.Models
         public Vehicle()
         {
             VehicleFeatures = new Collection<VehicleFeature>();
+            Photos = new Collection<Photo>();
         }
 
         public int Id { get; set; }
@@ -18,7 +19,8 @@ namespace UdemyDotNetCoreAngular.Domain.Models
         public string ContactPhone { get; set; }
         public string ContactMail { get; set; }
         public DateTime LastUpdate { get; set; }
-        public Model Model { get; set; }
-        public ICollection<VehicleFeature> VehicleFeatures { get; set; }
+        public virtual Model Model { get; set; }
+        public virtual ICollection<VehicleFeature> VehicleFeatures { get; set; }
+        public virtual  ICollection<Photo> Photos { get; set; }
     }
 }

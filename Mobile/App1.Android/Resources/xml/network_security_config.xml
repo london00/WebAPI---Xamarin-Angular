@@ -3,5 +3,6 @@
   <!--Set application-wide security config using base-config tag.-->
   <domain-config cleartextTrafficPermitted="true">
     <domain includeSubdomains="true">http://lorempixel.com</domain>
+    <domain includeSubdomains="true">https://picsum.photos</domain>
   </domain-config>
 </network-security-config>

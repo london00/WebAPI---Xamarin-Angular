@@ -29,6 +29,7 @@ namespace UdemyDotNetCoreAngular
             services.AddScoped<IMakeDAL, MakeDAL>();
             services.AddScoped<IVehicleDAL, VehicleDAL>();
             services.AddScoped<IFeatureDAL, FeatureDAL>();
+            services.AddScoped<IPhotoDAL, DAL.PhotoDAL>();
             services.AddScoped<IContext, DAL.Context>();
             #endregion
 

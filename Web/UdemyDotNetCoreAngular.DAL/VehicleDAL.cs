@@ -31,6 +31,7 @@ namespace UdemyDotNetCoreAngular.DAL
                     .ThenInclude(x => x.Feature)
                 .Include(x => x.Model)
                     .ThenInclude(x => x.Make)
+                .Include(x => x.Photos)
                 .FirstOrDefaultAsync(x => x.Id == id);
         }
 

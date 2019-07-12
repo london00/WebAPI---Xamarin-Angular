@@ -10,6 +10,7 @@ namespace UdemyDotNetCoreAngular.DTO.Maps
         public MappingProfile()
         {
             // Domain to DTO
+            CreateMap<Photo, PhotoDTO>();
             CreateMap<Model, KeyValuePairDTO>();
             CreateMap<Make, MakeDTO>();
             CreateMap<VehicleFeature, VehicleFeatureDTO>();
@@ -20,7 +21,8 @@ namespace UdemyDotNetCoreAngular.DTO.Maps
                 .ForMember(d => d.Contact, configMenber => configMenber.MapFrom(o => new Save_VehicleDTO.ContactInfo { Name = o.ContactName, Mail = o.ContactMail, Phone = o.ContactPhone }))
                 .ForMember(d => d.Model, configMember => configMember.MapFrom(o => new KeyValuePairDTO { Id = o.ModelId, Name = o.Model.Name }))
                 .ForMember(d => d.Make, configMember => configMember.MapFrom(o => new KeyValuePairDTO { Id = o.Model.MakeId, Name = o.Model.Make.Name }))
-                .ForMember(d => d.VehicleFeatures, configMember => configMember.MapFrom(o => o.VehicleFeatures.Select(vf => new KeyValuePairDTO { Id = vf.Feature.Id, Name = vf.Feature.Name })));
+                .ForMember(d => d.VehicleFeatures, configMember => configMember.MapFrom(o => o.VehicleFeatures.Select(vf => new KeyValuePairDTO { Id = vf.Feature.Id, Name = vf.Feature.Name })))
+                .ForMember(d => d.Photos, configMember => configMember.MapFrom(o => o.Photos.Select(photo => new PhotoDTO { Id = photo.Id, FileName = photo.FileName })));
 
             // DTO to Domain
             CreateMap<VehicleFeatureDTO, VehicleFeature>();

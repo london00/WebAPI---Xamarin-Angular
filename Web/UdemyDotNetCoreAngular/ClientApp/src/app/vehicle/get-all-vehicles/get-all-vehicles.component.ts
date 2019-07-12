@@ -1,9 +1,9 @@
 import { Component, NgZone, Inject } from '@angular/core';
-import { VehicleService } from '../../../services/vehicle.service';
 import { ToastrService } from 'ngx-toastr';
 import { ActivatedRoute, Router } from '@angular/router';
-import { VehicleDTO, MakeDTO, VehicleFilters } from '../../../DTO/ModelContext';
-import { MakeService } from '../../../services/makes.service';
+import { VehicleService } from '../../services/vehicle.service';
+import { VehicleFilters, MakeDTO, VehicleDTO } from '../../DTO/ModelContext';
+import { MakeService } from '../../services/makes.service';
 
 @Component({
   selector: 'app-get-all-vehicles',

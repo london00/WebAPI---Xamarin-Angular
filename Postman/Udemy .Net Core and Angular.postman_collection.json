@@ -53,7 +53,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n\t\"Id\": 1,\n    \"ModelId\": 1,\n    \"IsRegistered\": true,\n    \"Contact\": {\n\t    \"Name\": \"Geiser Aragón\",\n\t    \"Phone\": \"9991913233\",\n\t    \"Mail\": \"geiser.aragon@ksquareinc.com\"\n    },\n    \"VehicleFeatures\": [1]\n}"
+							"raw": "{\n\t\"Id\": 0,\n    \"ModelId\": 1,\n    \"IsRegistered\": true,\n    \"Contact\": {\n\t    \"Name\": \"Geiser Aragón\",\n\t    \"Phone\": \"9991913233\",\n\t    \"Mail\": \"geiser.aragon@ksquareinc.com\"\n    },\n    \"VehicleFeatures\": [\n    \t{\n    \t\t\"FeatureId\": 1\n    \t},\n    \t{\n    \t\t\"FeatureId\": 2\n    \t}\n    ]\n}"
 						},
 						"url": {
 							"raw": "{{baseUrl}}/api/Vehicles/save",
@@ -83,10 +83,10 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n\t\"Id\": 1,\n    \"ModelId\": 1,\n    \"IsRegistered\": true,\n    \"Contact\": {\n\t    \"Name\": \"Geiser Aragón 2\",\n\t    \"Phone\": \"9991913233\",\n\t    \"Mail\": \"geiser.aragon@ksquareinc.com\"\n    },\n    \"VehicleFeatures\": [\n    \t{\n    \t\t\"FeatureId\": 1,\n    \t\t\"VehicleId\": 1,\n    \t\t\"Id\": 1\n    \t}\n    ]\n}"
+							"raw": "{\n\t\"Id\": 3,\n    \"ModelId\": 1,\n    \"IsRegistered\": true,\n    \"Contact\": {\n\t    \"Name\": \"Geiser Aragón 2\",\n\t    \"Phone\": \"9991913233\",\n\t    \"Mail\": \"geiser.aragon@ksquareinc.com\"\n    },\n    \"VehicleFeatures\": [\n    \t{\n    \t\t\"FeatureId\": 1,\n    \t\t\"VehicleId\": 3\n    \t},\n    \t{\n    \t\t\"FeatureId\": 2,\n    \t\t\"VehicleId\": 3\n    \t}\n    ]\n}"
 						},
 						"url": {
-							"raw": "{{baseUrl}}/api/Vehicles/Update/1",
+							"raw": "{{baseUrl}}/api/Vehicles/Update/3",
 							"host": [
 								"{{baseUrl}}"
 							],
@@ -94,7 +94,7 @@
 								"api",
 								"Vehicles",
 								"Update",
-								"1"
+								"3"
 							]
 						}
 					},
@@ -110,15 +110,15 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "{{baseUrl}}/api/Vehicles/Update/1",
+							"raw": "{{baseUrl}}/api/Vehicles/Delete/9",
 							"host": [
 								"{{baseUrl}}"
 							],
 							"path": [
 								"api",
 								"Vehicles",
-								"Update",
-								"1"
+								"Delete",
+								"9"
 							]
 						}
 					},
@@ -126,23 +126,97 @@
 				},
 				{
 					"name": "GetVehicle",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
 					"request": {
-						"method": "DELETE",
+						"method": "GET",
 						"header": [],
 						"body": {
 							"mode": "raw",
 							"raw": ""
 						},
 						"url": {
-							"raw": "{{baseUrl}}/api/Vehicles/Update/1",
+							"raw": "{{baseUrl}}/api/Vehicles/Get/6",
 							"host": [
 								"{{baseUrl}}"
 							],
 							"path": [
 								"api",
 								"Vehicles",
-								"Update",
-								"1"
+								"Get",
+								"6"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetVehicles",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/Vehicles/Get?MakeId=7&ModelId=",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"Vehicles",
+								"Get"
+							],
+							"query": [
+								{
+									"key": "MakeId",
+									"value": "7"
+								},
+								{
+									"key": "ModelId",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "PhotosController",
+			"item": [
+				{
+					"name": "Upload",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/x-www-form-urlencoded",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "file",
+									"type": "file",
+									"src": "/C:/Users/Usuario/Downloads/arrow.png"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/vehicles/6/photos",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"vehicles",
+								"6",
+								"photos"
 							]
 						}
 					},

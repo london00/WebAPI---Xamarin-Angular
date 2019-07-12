@@ -4,7 +4,7 @@ export interface MakeDTO {
   Models: KeyValuePairDTO[];
 }
 
-export interface KeyValuePairDTO {
+export class KeyValuePairDTO {
   Id: number;
   Name: string;
 }
@@ -14,19 +14,19 @@ export class Save_VehicleDTO {
   MakeId: number;
   ModelId: number;
   IsRegistered: boolean;
-  Contact: ContactInfo;
+  Contact: ContactInfoDTO;
   VehicleFeatures: Array<VehicleFeatureDTO>;
 
   constructor() {
     this.VehicleFeatures = new Array<VehicleFeatureDTO>();
-    this.Contact = new ContactInfo();
+    this.Contact = new ContactInfoDTO();
     this.ModelId = 0;
     this.MakeId = 0;
     this.IsRegistered = false;
   }
 }
 
-export class ContactInfo {
+export class ContactInfoDTO {
   Name: string;
   Phone: string;
   Mail: string;
@@ -41,11 +41,14 @@ export class VehicleFeatureDTO {
 export class VehicleDTO {
   constructor() {
     this.VehicleFeatures = new Array<KeyValuePairDTO>();
+    this.Make = new KeyValuePairDTO();
+    this.Model = new KeyValuePairDTO();
+    this.Contact = new ContactInfoDTO();
   }
 
   public Id: number;
   public IsRegistered: boolean;
-  public Contact: ContactInfo;
+  public Contact: ContactInfoDTO;
   public LastUpdate: string;
   public Model: KeyValuePairDTO;
   public Make: KeyValuePairDTO;
