@@ -18,6 +18,7 @@ namespace UdemyDotNetCoreAngular.DTO
         public DateTime LastUpdate { get; set; }
         public KeyValuePairDTO Model { get; set; }
         public KeyValuePairDTO Make { get; set; }
+        public ICollection<PhotoDTO> Photos { get; set; }
         public ICollection<KeyValuePairDTO> VehicleFeatures { get; set; }
     }
 }
