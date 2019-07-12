@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="UdemyCourse.Mobile.Pages.Udemy.Exercises.E2_StackLayoutPage"
+             Title="Exercise 2 - Stack Layout">
+    <ContentPage.Padding>
+        0, 20, 0, 0
+    </ContentPage.Padding>
+    <ContentPage.Content>
+        <ScrollView VerticalOptions="StartAndExpand">
+            <StackLayout VerticalOptions="StartAndExpand">
+                <Label Text="nyc_photographer"
+                    Margin="5, 0, 10, 5"
+                    HorizontalOptions="StartAndExpand" />
+                <Image HorizontalOptions="FillAndExpand"  Source="http://lorempixel.com/1920/1080/nature/3/" />
+                <StackLayout Orientation="Horizontal" Padding="0, 10, 0, 20">
+                    <Label  Text="Like" TextColor="#1E88E5" Margin="5, 0, 10, 5"  x:Name="lblLike"  />
+                    <Label Text="Comment" TextColor="#1E88E5" Margin="5, 0, 10, 5"/>
+                    <Label Text="Share" TextColor="#1E88E5" Margin="5, 0, 10, 5"/>
+                </StackLayout>
+                <Label Text="700 likes" FontAttributes="Bold" FontSize="Large" Margin="5, 0, 10, 5"/>
+                <Label Text="This is a shot yestarday in Skanor, Sweden, when driving home, from a cuuple of work in Denmark." Margin="5, 0, 10, 5"/>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

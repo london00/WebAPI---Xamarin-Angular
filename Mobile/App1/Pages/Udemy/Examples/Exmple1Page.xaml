@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="UdemyCourse.Mobile.Pages.Udemy.Exmple1Page">
+    <ContentPage.Padding>0, 20, 0, 0</ContentPage.Padding>
+    <ContentPage.BackgroundColor>#FF9E80</ContentPage.BackgroundColor>
+    <ContentPage.Content>
+        <StackLayout BindingContext="{x:Reference sliderExample}">
+            <StackLayout.VerticalOptions>FillAndExpand</StackLayout.VerticalOptions>
+            <StackLayout.HorizontalOptions>FillAndExpand</StackLayout.HorizontalOptions>
+            <StackLayout.BackgroundColor>#FAFAFA</StackLayout.BackgroundColor>
+            <StackLayout.Padding>10</StackLayout.Padding>
+            <StackLayout.Spacing>10</StackLayout.Spacing>
+            <Label 
+                Text="{Binding Path=Value, StringFormat='Current value is: {0:F2}' }"
+                Opacity="{Binding Path=Value }"
+                TextColor="#607D8B"
+                FontSize="Large"
+                />
+            <Slider x:Name="sliderExample" WidthRequest="100"></Slider>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="UdemyCourse.Mobile.Pages.Udemy.Exercises.E4_AbsoluteLayutPage"
+             Title="Exercise 4 - Absolute Layout">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style x:Key="TotalLabel" TargetType="Label">
+                <Setter Property="FontSize" Value="60" />
+                <Setter Property="TextColor" Value="#33353a" />
+                <Setter Property="FontAttributes" Value="Bold"/>
+                <Setter Property="HorizontalOptions" Value="Center"/>
+                <Setter Property="FontFamily" Value="RussoOne-Regular.ttf#Russo One"/>
+            </Style>
+            <Style TargetType="Button" x:Key="btnAdd">
+                <Setter Property="CornerRadius" Value="20"/>
+                <Setter Property="BackgroundColor" Value="#0097A7"/>
+                <Setter Property="TextColor" Value="#ffffff"/>
+                <Setter Property="FontSize" Value="18"/>
+            </Style>
+            <Style TargetType="ContentPage">
+                <Setter Property="BackgroundColor" Value="Black" />
+            </Style>
+            <Style TargetType="Label" x:Key="lblQuestion">
+                <Setter Property="FontSize" Value="18"/>
+                <Setter Property="TextColor" Value="White"/>
+                <Setter Property="HorizontalOptions" Value="Center"/>
+            </Style>
+            <Style TargetType="Label" x:Key="lblVerbiage">
+                <Setter Property="FontSize" Value="16"/>
+                <Setter Property="TextColor" Value="White"/>
+                <Setter Property="HorizontalTextAlignment" Value="Center"/>
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <ScrollView>
+            <AbsoluteLayout>
+                <ActivityIndicator IsRunning="{Binding Source={Reference imgBackground}, Path=IsLoading}" Color="White" AbsoluteLayout.LayoutBounds="0.5, 0.5, 100, 100" AbsoluteLayout.LayoutFlags="All"/>
+                <Image x:Name="imgBackground" Source="http://lorempixel.com/1400/1200/sports/1" Aspect="AspectFill" AbsoluteLayout.LayoutBounds="0, 0, 1, 1" AbsoluteLayout.LayoutFlags="All" />
+                <Label Text="$11.95" AbsoluteLayout.LayoutBounds="0, .1, 1, .12" AbsoluteLayout.LayoutFlags="All" Style="{StaticResource TotalLabel}" />
+                <Button Text="Add $7.99 Credit" AbsoluteLayout.LayoutBounds=".5, 0.25, 200, 40" AbsoluteLayout.LayoutFlags="PositionProportional" Style="{StaticResource btnAdd}" />
+                <Label Text="Why pay for credit?" AbsoluteLayout.LayoutBounds=".5, 0.80, 1, .2" AbsoluteLayout.LayoutFlags="All" Style="{StaticResource lblQuestion}" />
+                <Label AbsoluteLayout.LayoutBounds=".5, 0.90, .8, .2" AbsoluteLayout.LayoutFlags="All" Style="{StaticResource lblVerbiage}" >
+                    Because you can reach people who aren´t on SkyApp by calling mobile and landline numbers, or spending SMS
+                </Label>
+            </AbsoluteLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

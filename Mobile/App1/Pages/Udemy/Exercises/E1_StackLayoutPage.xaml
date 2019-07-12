@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="UdemyCourse.Mobile.Pages.Udemy.Exercises.E1_StackLayoutPage"
+             Title="Exercise 1 - Stack Layout">
+    <ContentPage.BackgroundColor>#607D8B</ContentPage.BackgroundColor>
+    <ContentPage.Content>
+        <StackLayout VerticalOptions="Center">
+            <Label Text="Welcome to Xamarin"
+                VerticalOptions="Center" 
+                HorizontalOptions="CenterAndExpand" 
+                FontSize="30"
+                TextColor="White"
+                FontAttributes="Bold"
+                HorizontalTextAlignment="Center"/>
+            <Label Text="Cross-platform apps made easy"
+                TextColor="White"
+                VerticalOptions="Center" 
+                HorizontalOptions="CenterAndExpand" 
+                FontSize="18"
+                />
+            <Button Text="Login" CornerRadius="5" BackgroundColor="#263238" TextColor="#FAFAFA" Clicked="Button_Clicked"></Button>
+            <Button Text="Register" CornerRadius="5"  BackgroundColor="#263238" TextColor="#FAFAFA" Clicked="Button_Clicked_1"></Button>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
