@@ -7,6 +7,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Newtonsoft.Json.Serialization;
+using UdemyDotNetCoreAngular.Configuration;
 using UdemyDotNetCoreAngular.DAL;
 using UdemyDotNetCoreAngular.Domain;
 
@@ -24,6 +25,10 @@ namespace UdemyDotNetCoreAngular
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            #region Configuration
+            services.Configure<PhotoSetting>(Configuration.GetSection("PhotoSetting"));
+            #endregion
+
             #region Dependency Injection
             services.AddScoped<IVehicleDAL, VehicleDAL>();
             services.AddScoped<IMakeDAL, MakeDAL>();
