@@ -64,21 +64,26 @@ export class VehicleDetailsComponent {
 
   UploadPhoto() {
     var nativeElement: HTMLInputElement = this.fileInput.nativeElement;
-
-    this.photosService.Upload(this.vehicle.Id, nativeElement.files[0]).subscribe(
-      (event) => {
-        switch (event.type) {
-          case HttpEventType.UploadProgress:
-            this.processCompleted = Math.round((event["loaded"] / event["total"]) * 100);
-            break;
-          case HttpEventType.Response:
-            var photo = new Photo();
-            photo.Id = event.body["Id"];
-            photo.FileName = event.body["FileName"];
-            this.vehicle.Photos.push(photo);
-            break;
+    if (nativeElement.files.length > 0) {
+      this.photosService.Upload(this.vehicle.Id, nativeElement.files[0]).subscribe(
+        (event) => {
+          switch (event.type) {
+            case HttpEventType.UploadProgress:
+              this.processCompleted = Math.round((event["loaded"] / event["total"]) * 100);
+              break;
+            case HttpEventType.Response:
+              var photo = new Photo();
+              photo.Id = event.body["Id"];
+              photo.FileName = event.body["FileName"];
+              this.vehicle.Photos.push(photo);
+              nativeElement.value = null;
+              break;
+          }
+        },
+        error => {
+          this.toastyService.warning(error.error, "Server error");
         }
-      }
-    );
+      );
+    }
   }
 }
