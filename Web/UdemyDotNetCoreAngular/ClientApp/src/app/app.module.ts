@@ -2,8 +2,8 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, ErrorHandler } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
+import { HttpClientModule } from '@angular/common/http';
 
 // Third party modules
 import { ToastrModule } from 'ngx-toastr'
@@ -21,10 +21,10 @@ import { MakeService } from './services/makes.service';
 import { FeaturesService } from './services/features.service';
 import { VehicleService } from './services/vehicle.service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { AppErrorHandler } from './app.error-handler';
 import { GetAllVehiclesComponent } from './vehicle/get-all-vehicles/get-all-vehicles.component';
 import { VehicleDetailsComponent } from './vehicle/vehicle-details/vehicle-details.component';
 import { PhotosService } from './services/photos.service';
+import { AppErrorHandler } from './app.error-handler';
 
 @NgModule({
   declarations: [
@@ -54,14 +54,14 @@ import { PhotosService } from './services/photos.service';
     BrowserAnimationsModule
   ],
   providers: [
-    MakeService,
-    FeaturesService,
-    VehicleService,
     PhotosService,
     {
       provide: ErrorHandler,
       useClass: AppErrorHandler
-    }
+    },
+    MakeService,
+    FeaturesService,
+    VehicleService
   ],
   bootstrap: [AppComponent]
 })

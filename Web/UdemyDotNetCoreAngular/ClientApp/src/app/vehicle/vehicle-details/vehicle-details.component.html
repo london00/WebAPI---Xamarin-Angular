@@ -33,6 +33,9 @@
     <form name="photoForm">
       <input type="file" class="btn btn-primary" (change)="UploadPhoto()" #fileInput />
     </form>
+    <div class="progress" *ngIf="processCompleted != 100">
+      <div class="progress-bar" role="progressbar" [attr.aria-valuenow]="processCompleted" [style.width]="processCompleted + '%'" aria-valuemin="0" aria-valuemax="100"></div>
+    </div>
     <div class="well">
       <img src="/uploads/{{photo.FileName}}" class="photosThumbnail" *ngFor="let photo of vehicle.Photos" />
     </div>
