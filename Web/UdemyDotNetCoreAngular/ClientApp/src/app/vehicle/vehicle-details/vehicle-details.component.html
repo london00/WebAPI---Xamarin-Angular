@@ -29,8 +29,12 @@
     <button class="btn btn-danger" type="button" (click)="Delete()">Delete</button>
   </div>
   <div class="tab-pane fade" id="vehiclePhoto" role="tabpanel" aria-labelledby="vehiclePhoto-tab">
+    <h2>Photos</h2>
     <form name="photoForm">
       <input type="file" class="btn btn-primary" (change)="UploadPhoto()" #fileInput />
     </form>
+    <div class="well">
+      <img src="/uploads/{{photo.FileName}}" class="photosThumbnail" *ngFor="let photo of vehicle.Photos" />
+    </div>
   </div>
 </div>

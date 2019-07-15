@@ -1,8 +1,9 @@
+import * as $ from 'jquery'
 import { Component, ElementRef, ViewChild } from '@angular/core';
 import { VehicleService } from '../../services/vehicle.service';
 import { ToastrService } from 'ngx-toastr';
 import { ActivatedRoute, Router } from '@angular/router';
-import { VehicleDTO } from '../../DTO/ModelContext';
+import { VehicleDTO, Photo } from '../../DTO/ModelContext';
 import { HttpErrorResponse } from '@angular/common/http';
 import { PhotosService } from '../../services/photos.service';
 
@@ -21,7 +22,7 @@ export class VehicleDetailsComponent {
   private router: Router;
   @ViewChild('fileInput') public fileInput: ElementRef;
 
-    /** VehicleDetails ctor */
+  /** VehicleDetails ctor */
   constructor(vehicleService: VehicleService, photosService: PhotosService, toastyService: ToastrService, route: ActivatedRoute, router: Router) {
     this.vehicleService = vehicleService;
     this.toastyService = toastyService;
@@ -59,13 +60,10 @@ export class VehicleDetailsComponent {
   }
 
   UploadPhoto() {
-    debugger;
     var nativeElement: HTMLInputElement = this.fileInput.nativeElement;
     this.photosService.Upload(this.vehicle.Id, nativeElement.files[0]).subscribe(
-      (response) => {
-        debugger;
-
-        console.log(response);
+      (uploadesPhoto: Photo) => {
+        this.vehicle.Photos.push(uploadesPhoto);
       }
     );
   }
