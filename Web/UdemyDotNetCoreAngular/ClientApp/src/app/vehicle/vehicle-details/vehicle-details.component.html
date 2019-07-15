@@ -29,6 +29,8 @@
     <button class="btn btn-danger" type="button" (click)="Delete()">Delete</button>
   </div>
   <div class="tab-pane fade" id="vehiclePhoto" role="tabpanel" aria-labelledby="vehiclePhoto-tab">
-    Photos
+    <form name="photoForm">
+      <input type="file" class="btn btn-primary" (change)="UploadPhoto()" #fileInput />
+    </form>
   </div>
 </div>

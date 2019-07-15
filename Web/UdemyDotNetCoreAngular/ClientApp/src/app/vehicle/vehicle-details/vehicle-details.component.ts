@@ -1,9 +1,10 @@
-import { Component } from '@angular/core';
+import { Component, ElementRef, ViewChild } from '@angular/core';
 import { VehicleService } from '../../services/vehicle.service';
 import { ToastrService } from 'ngx-toastr';
 import { ActivatedRoute, Router } from '@angular/router';
 import { VehicleDTO } from '../../DTO/ModelContext';
 import { HttpErrorResponse } from '@angular/common/http';
+import { PhotosService } from '../../services/photos.service';
 
 @Component({
     selector: 'app-vehicle-details',
@@ -14,14 +15,17 @@ import { HttpErrorResponse } from '@angular/common/http';
 export class VehicleDetailsComponent {
   private vehicle: VehicleDTO;
   private vehicleService: VehicleService;
+  private photosService: PhotosService;
   private toastyService: ToastrService;
   private route: ActivatedRoute;
   private router: Router;
+  @ViewChild('fileInput') public fileInput: ElementRef;
 
     /** VehicleDetails ctor */
-  constructor(vehicleService: VehicleService, toastyService: ToastrService, route: ActivatedRoute, router: Router) {
+  constructor(vehicleService: VehicleService, photosService: PhotosService, toastyService: ToastrService, route: ActivatedRoute, router: Router) {
     this.vehicleService = vehicleService;
     this.toastyService = toastyService;
+    this.photosService = photosService;
     this.route = route;
     this.router = router;
     this.vehicle = new VehicleDTO();
@@ -52,5 +56,17 @@ export class VehicleDetailsComponent {
           this.router.navigate(["/"]);
         });
     }
+  }
+
+  UploadPhoto() {
+    debugger;
+    var nativeElement: HTMLInputElement = this.fileInput.nativeElement;
+    this.photosService.Upload(this.vehicle.Id, nativeElement.files[0]).subscribe(
+      (response) => {
+        debugger;
+
+        console.log(response);
+      }
+    );
   }
 }

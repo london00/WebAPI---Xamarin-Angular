@@ -24,6 +24,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppErrorHandler } from './app.error-handler';
 import { GetAllVehiclesComponent } from './vehicle/get-all-vehicles/get-all-vehicles.component';
 import { VehicleDetailsComponent } from './vehicle/vehicle-details/vehicle-details.component';
+import { PhotosService } from './services/photos.service';
 
 @NgModule({
   declarations: [
@@ -56,6 +57,7 @@ import { VehicleDetailsComponent } from './vehicle/vehicle-details/vehicle-detai
     MakeService,
     FeaturesService,
     VehicleService,
+    PhotosService,
     {
       provide: ErrorHandler,
       useClass: AppErrorHandler
