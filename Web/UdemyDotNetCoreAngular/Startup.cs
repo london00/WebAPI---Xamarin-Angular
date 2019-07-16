@@ -1,4 +1,5 @@
 using AutoMapper;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
@@ -39,12 +40,6 @@ namespace UdemyDotNetCoreAngular
             #endregion
 
             services.AddDbContext<VegaDBContext>(c => c.UseSqlServer(Configuration.GetConnectionString("Default")));
-            services.AddMvc()
-                    .SetCompatibilityVersion(CompatibilityVersion.Version_2_2)
-                    .AddJsonOptions(options =>
-                    {
-                        options.SerializerSettings.ContractResolver = new DefaultContractResolver();
-                    });
 
 #pragma warning disable CS0618 // Type or member is obsolete
             services.AddAutoMapper();
@@ -55,6 +50,24 @@ namespace UdemyDotNetCoreAngular
             {
                 configuration.RootPath = "ClientApp/dist";
             });
+
+            // 1. Add Authentication Services
+            services.AddAuthentication(options =>
+            {
+                options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+                options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+            }).AddJwtBearer(options =>
+            {
+                options.Authority = Configuration.GetSection("Auth0")["Authority"];
+                options.Audience = Configuration.GetSection("Auth0")["Audience"];
+            });
+
+            services.AddMvc()
+                    .SetCompatibilityVersion(CompatibilityVersion.Version_2_2)
+                    .AddJsonOptions(options =>
+                    {
+                        options.SerializerSettings.ContractResolver = new DefaultContractResolver();
+                    });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -74,6 +87,7 @@ namespace UdemyDotNetCoreAngular
             app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseSpaStaticFiles();
+            app.UseAuthentication();
 
             app.UseMvc(routes =>
             {

@@ -3,6 +3,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using UdemyDotNetCoreAngular.DAL;
 using UdemyDotNetCoreAngular.Domain.Models;
@@ -23,6 +24,7 @@ namespace UdemyDotNetCoreAngular.Controllers
         }
 
         [HttpPost]
+        [Authorize]
         public async Task<IActionResult> Save([FromBody] Save_VehicleDTO model)
         {
             if (model.Id != 0)
@@ -43,6 +45,7 @@ namespace UdemyDotNetCoreAngular.Controllers
         }
 
         [HttpPut("{id}")]
+        [Authorize]
         public async Task<IActionResult> Update(int id, [FromBody] Save_VehicleDTO model)
         {
             if (model.Id != id)
@@ -77,6 +80,7 @@ namespace UdemyDotNetCoreAngular.Controllers
         }
 
         [HttpDelete("{id}")]
+        [Authorize]
         public async Task<IActionResult> Delete(int id)
         {
             var vehicle = await vehicleDAL.GetVehicleById(id);
