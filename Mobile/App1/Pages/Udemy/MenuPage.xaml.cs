@@ -21,7 +21,8 @@ namespace UdemyCourse.Mobile.Pages.Udemy
             PagesList.Add("Excercise 3");
             PagesList.Add("Excercise 4");
             PagesList.Add("Excercise 5");
-            PagesList.Add("Example 3 List item");
+            PagesList.Add("Example 3 Bindable list item");
+            PagesList.Add("Example 4 Custom list item");
 
             lstPages.ItemsSource = PagesList;
         }
@@ -53,8 +54,11 @@ namespace UdemyCourse.Mobile.Pages.Udemy
                 case "Excercise 5":
                     await Navigation.PushAsync(new E5_ImageGaleryPage());
                     break;
-                case "Example 3 List item":
+                case "Example 3 Bindable list item":
                     await Navigation.PushAsync(new E3_ListItem_Page());
+                    break;
+                case "Example 4 Custom list item":
+                    await Navigation.PushAsync(new E4_CustomListView_Page());
                     break;
                 default:
                     break;
