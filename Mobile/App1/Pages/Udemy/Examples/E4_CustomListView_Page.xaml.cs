@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using Xamarin.Essentials;
 using Xamarin.Forms;
@@ -63,6 +64,34 @@ namespace UdemyCourse.Mobile.Pages.Udemy.Examples
             catch (Exception ex)
             {
                 // Other error has occurred.
+            }
+        }
+
+        private async void Switch_ToggledAsync(object sender, ToggledEventArgs e)
+        {
+            try
+            {
+                // Turn On
+                await Flashlight.TurnOnAsync();
+                Thread.Sleep(TimeSpan.FromSeconds(1));
+                // Turn Off
+                await Flashlight.TurnOffAsync();
+            }
+            catch (FeatureNotSupportedException fnsEx)
+            {
+                // Handle not supported on device exception
+            }
+            catch (PermissionException pEx)
+            {
+                // Handle permission exception
+            }
+            catch (Exception ex)
+            {
+                // Unable to turn on/off flashlight
+            }
+            finally
+            {
+                await Flashlight.TurnOffAsync();
             }
         }
     }

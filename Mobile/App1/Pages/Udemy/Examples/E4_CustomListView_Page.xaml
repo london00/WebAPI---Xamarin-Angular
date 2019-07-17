@@ -18,6 +18,7 @@
                                     <Label Text="{Binding Status}" FontSize="Small" TextColor="#263238"/>
                                 </StackLayout>
                                 <Label Text="Follow" VerticalOptions="Center" TextColor="#2196F3" />
+                                <Switch Toggled="Switch_ToggledAsync" />
                             </StackLayout>
                         </ViewCell>
                     </DataTemplate>
