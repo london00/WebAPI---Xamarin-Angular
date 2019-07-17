@@ -7,7 +7,7 @@
              x:Class="UdemyCourse.Mobile.Pages.Udemy.Examples.E4_CustomListView_Page">
     <ContentPage.Content>
         <StackLayout>
-            <ListView x:Name="lstNames" ItemsSource="{Binding lstNames}" HasUnevenRows="True">
+            <ListView x:Name="lstNames" ItemsSource="{Binding lstNames}" HasUnevenRows="True" ItemSelected="LstNames_ItemSelected">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell >

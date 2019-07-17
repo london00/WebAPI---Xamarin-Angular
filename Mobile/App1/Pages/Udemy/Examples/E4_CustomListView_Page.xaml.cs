@@ -4,7 +4,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -43,6 +43,27 @@ namespace UdemyCourse.Mobile.Pages.Udemy.Examples
             });
 
             lstNames.ItemsSource = lstPeople;
+        }
+
+        private void LstNames_ItemSelected(object sender, SelectedItemChangedEventArgs e)
+        {
+            try
+            {
+                // Use default vibration length
+                Vibration.Vibrate();
+
+                // Or use specified time
+                var duration = TimeSpan.FromSeconds(1);
+                Vibration.Vibrate(duration);
+            }
+            catch (FeatureNotSupportedException ex)
+            {
+                // Feature not supported on device
+            }
+            catch (Exception ex)
+            {
+                // Other error has occurred.
+            }
         }
     }
 }
