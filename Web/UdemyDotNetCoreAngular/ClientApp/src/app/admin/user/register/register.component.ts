@@ -21,8 +21,8 @@ export class RegisterComponent {
   public Register() {
     this.userService.Register(this.user).subscribe(
       success => {
-        this.toastyService.success("User created successfully", "Register");
-        this.router.navigate(["/"]);
+        this.toastyService.success(`User created successfully.  \nWe have sent a confirmation email to ${this.user.Email}. \nPlease confirm your email account.`, "Register");
+        this.router.navigate(["/login", this.user.Email]);
       }
     );
   }

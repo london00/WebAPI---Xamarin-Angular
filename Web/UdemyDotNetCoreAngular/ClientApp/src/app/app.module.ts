@@ -45,6 +45,7 @@ import { UserService } from './services/user.service';
     RouterModule.forRoot([
       { path: '', component: HomeComponent, pathMatch: 'full' },
       { path: 'login', component: LoginComponent },
+      { path: 'login/:email', component: LoginComponent },
       { path: 'register', component: RegisterComponent },
       { path: 'vehicle/new', component: VehicleComponent },
       { path: 'vehicle/:id', component: VehicleComponent },
