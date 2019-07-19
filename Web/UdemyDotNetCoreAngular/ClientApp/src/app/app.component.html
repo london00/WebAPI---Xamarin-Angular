@@ -1,6 +1,10 @@
 <body>
-  <app-nav-menu></app-nav-menu>
   <div class="container">
-    <router-outlet></router-outlet>
+    <!--https://bootswatch.com/sketchy-->
+    <link rel="stylesheet" href="https://bootswatch.com/4/sketchy/bootstrap.css" media="screen">
+    <app-nav-menu></app-nav-menu>
+    <div class="jumbotron">
+      <router-outlet></router-outlet>
+    </div>
   </div>
 </body>
