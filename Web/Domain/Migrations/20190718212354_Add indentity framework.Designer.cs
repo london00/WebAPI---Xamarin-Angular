@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using UdemyDotNetCoreAngular.Domain;
 
 namespace UdemyDotNetCoreAngular.Migrations
 {
     [DbContext(typeof(VegaDBContext))]
-    partial class VegaDBContextModelSnapshot : ModelSnapshot
+    [Migration("20190718212354_Add indentity framework")]
+    partial class Addindentityframework
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -73,9 +75,6 @@ namespace UdemyDotNetCoreAngular.Migrations
                     b.Property<string>("ConcurrencyStamp")
                         .IsConcurrencyToken();
 
-                    b.Property<string>("Discriminator")
-                        .IsRequired();
-
                     b.Property<string>("Email")
                         .HasMaxLength(256);
 
@@ -115,8 +114,6 @@ namespace UdemyDotNetCoreAngular.Migrations
                         .HasFilter("[NormalizedUserName] IS NOT NULL");
 
                     b.ToTable("AspNetUsers");
-
-                    b.HasDiscriminator<string>("Discriminator").HasValue("IdentityUser");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<string>", b =>
@@ -310,13 +307,6 @@ namespace UdemyDotNetCoreAngular.Migrations
                         .IsUnique();
 
                     b.ToTable("VehicleFeatures");
-                });
-
-            modelBuilder.Entity("UdemyDotNetCoreAngular.Domain.Models.User", b =>
-                {
-                    b.HasBaseType("Microsoft.AspNetCore.Identity.IdentityUser");
-
-                    b.HasDiscriminator().HasValue("User");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>

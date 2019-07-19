@@ -1,7 +1,8 @@
 using AutoMapper;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
+//using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.SpaServices.AngularCli;
 using Microsoft.EntityFrameworkCore;
@@ -11,6 +12,7 @@ using Newtonsoft.Json.Serialization;
 using UdemyDotNetCoreAngular.Configuration;
 using UdemyDotNetCoreAngular.DAL;
 using UdemyDotNetCoreAngular.Domain;
+using UdemyDotNetCoreAngular.Domain.Models;
 
 namespace UdemyDotNetCoreAngular
 {
@@ -39,7 +41,6 @@ namespace UdemyDotNetCoreAngular
             services.AddScoped<IContext, DAL.Context>();
             #endregion
 
-            services.AddDbContext<VegaDBContext>(c => c.UseSqlServer(Configuration.GetConnectionString("Default")));
 
 #pragma warning disable CS0618 // Type or member is obsolete
             services.AddAutoMapper();
@@ -51,23 +52,32 @@ namespace UdemyDotNetCoreAngular
                 configuration.RootPath = "ClientApp/dist";
             });
 
-            // 1. Add Authentication Services
-            services.AddAuthentication(options =>
-            {
-                options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
-                options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
-            }).AddJwtBearer(options =>
-            {
-                options.Authority = Configuration.GetSection("Auth0")["Authority"];
-                options.Audience = Configuration.GetSection("Auth0")["Audience"];
-            });
+            //// 1. Add Authentication Services
+            //services.AddAuthentication(options =>
+            //{
+            //    options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+            //    options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+            //}).AddJwtBearer(options =>
+            //{
+            //    options.Authority = Configuration.GetSection("Auth0")["Authority"];
+            //    options.Audience = Configuration.GetSection("Auth0")["Audience"];
+            //});
 
             services.AddMvc()
-                    .SetCompatibilityVersion(CompatibilityVersion.Version_2_2)
-                    .AddJsonOptions(options =>
-                    {
-                        options.SerializerSettings.ContractResolver = new DefaultContractResolver();
-                    });
+                .SetCompatibilityVersion(CompatibilityVersion.Version_2_2)
+                .AddJsonOptions(options =>
+                {
+                    options.SerializerSettings.ContractResolver = new DefaultContractResolver();
+                });
+
+            services.AddDbContext<VegaDBContext>(c => c.UseSqlServer(Configuration.GetConnectionString("Default")));
+
+            services.AddDefaultIdentity<User>()
+                .AddRoles<IdentityRole>()
+                .AddEntityFrameworkStores<VegaDBContext>();
+                //.AddDefaultTokenProviders();
+
+           
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
