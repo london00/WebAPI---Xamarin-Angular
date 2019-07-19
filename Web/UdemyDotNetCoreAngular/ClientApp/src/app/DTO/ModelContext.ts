@@ -71,3 +71,9 @@ export class Photo {
   public Id: number;
   public FileName: number;
 }
+
+export class UserDTO {
+  public UserName: string;
+  public Email: string;
+  public Password: string;
+}

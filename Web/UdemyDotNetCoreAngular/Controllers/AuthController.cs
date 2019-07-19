@@ -24,10 +24,26 @@ namespace UdemyDotNetCoreAngular.Controllers
             this.context = context;
         }
 
-        [HttpGet]
-        public async Task<IActionResult> LogIn()
+
+        [HttpPost]
+        public async Task<IActionResult> Register([FromBody] UserDTO userDTO)
         {
-            
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+            var user = new User
+            {
+                UserName = userDTO.UserName,
+                Email = userDTO.Email
+            };
+            var userResult = await userManager.CreateAsync(user, userDTO.Password);
+
+            if (!userResult.Succeeded)
+            {
+                return BadRequest(userResult.Errors);
+            }
+
             return Ok();
         }
     }

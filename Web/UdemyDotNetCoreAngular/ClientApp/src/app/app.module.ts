@@ -25,6 +25,7 @@ import { PhotosService } from './services/photos.service';
 import { AppErrorHandler } from './app.error-handler';
 import { LoginComponent } from './admin/user/login/login.component';
 import { RegisterComponent } from './admin/user/register/register.component';
+import { UserService } from './services/user.service';
 
 @NgModule({
   declarations: [
@@ -61,7 +62,8 @@ import { RegisterComponent } from './admin/user/register/register.component';
     },
     MakeService,
     FeaturesService,
-    VehicleService
+    VehicleService,
+    UserService
   ],
   bootstrap: [AppComponent]
 })

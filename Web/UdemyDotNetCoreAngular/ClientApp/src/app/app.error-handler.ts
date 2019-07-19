@@ -13,7 +13,17 @@ export class AppErrorHandler implements ErrorHandler {
       () => {
         console.warn(this.lastError);
         if (this.lastError.error) {
-          this.toastrService.error(this.lastError.error.title, "Error");
+          var errorDescriptions = [];
+          if (Array.isArray(error.error)) {
+            error.error.forEach((e) => {
+              errorDescriptions.push(e.Description);
+            });
+
+            this.toastrService.warning(errorDescriptions.join("\n"), "Validation errors", { timeOut: 5000 });
+          }
+          else {
+            this.toastrService.error(this.lastError.error.title, "Error");
+          }
         }
         else {
           this.toastrService.error("An unexpected error happened", "Error");
