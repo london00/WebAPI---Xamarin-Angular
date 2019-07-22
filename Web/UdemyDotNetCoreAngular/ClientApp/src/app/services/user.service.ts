@@ -10,4 +10,8 @@ export class UserService {
   public Register(user: UserDTO) {
     return this.http.post(this.baseUrl + 'api/Auth/Register', user);
   }
+
+  public Login(user: UserDTO) {
+    return this.http.post(this.baseUrl + 'api/Auth/Login', user);
+  }
 }

@@ -26,6 +26,7 @@ import { AppErrorHandler } from './app.error-handler';
 import { LoginComponent } from './admin/user/login/login.component';
 import { RegisterComponent } from './admin/user/register/register.component';
 import { UserService } from './services/user.service';
+import { AuthGuard } from './services/auth-guard.service';
 
 @NgModule({
   declarations: [
@@ -43,14 +44,14 @@ import { UserService } from './services/user.service';
     HttpClientModule,
     FormsModule,
     RouterModule.forRoot([
-      { path: '', component: HomeComponent, pathMatch: 'full' },
+      { path: '', component: HomeComponent, pathMatch: 'full', canActivate: [AuthGuard] },
       { path: 'login', component: LoginComponent },
       { path: 'login/:email', component: LoginComponent },
       { path: 'register', component: RegisterComponent },
-      { path: 'vehicle/new', component: VehicleComponent },
-      { path: 'vehicle/:id', component: VehicleComponent },
-      { path: 'vehicles', component: GetAllVehiclesComponent },
-      { path: 'vehicle/details/:id', component: VehicleDetailsComponent }
+      { path: 'vehicle/new', component: VehicleComponent, canActivate: [AuthGuard] },
+      { path: 'vehicle/:id', component: VehicleComponent, canActivate: [AuthGuard] },
+      { path: 'vehicles', component: GetAllVehiclesComponent, canActivate: [AuthGuard] },
+      { path: 'vehicle/details/:id', component: VehicleDetailsComponent, canActivate: [AuthGuard] }
     ]),
     ToastrModule.forRoot(), // https://www.npmjs.com/package/ngx-toastr
     BrowserAnimationsModule
@@ -64,7 +65,8 @@ import { UserService } from './services/user.service';
     MakeService,
     FeaturesService,
     VehicleService,
-    UserService
+    UserService,
+    AuthGuard
   ],
   bootstrap: [AppComponent]
 })
