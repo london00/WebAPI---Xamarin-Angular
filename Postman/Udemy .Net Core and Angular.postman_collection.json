@@ -12,6 +12,9 @@
 				{
 					"name": "GetFeaturesByModel",
 					"request": {
+						"auth": {
+							"type": "noauth"
+						},
 						"method": "GET",
 						"header": [],
 						"url": {
@@ -247,6 +250,110 @@
 								"vehicles",
 								"6",
 								"photos"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "AuthController",
+			"item": [
+				{
+					"name": "Register",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\t\"UserName\" : \"MyUserName\",\r\n\t\"Email\" : \"my@email.com\",\r\n\t\"Password\": \"My.Password.1\"\r\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/auth/Register",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"auth",
+								"Register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "774a2d0b-79c1-4986-8bec-328581afef78",
+								"exec": [
+									"var jsonData = JSON.parse(responseBody);",
+									"postman.token = jsonData.token;"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\t\"Email\" : \"my@email.com\",\r\n\t\"Password\": \"My.Password.1\"\r\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/auth/Login",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"auth",
+								"Login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetUserDetails",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/api/auth/GetUserDetails",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"auth",
+								"GetUserDetails"
 							]
 						}
 					},

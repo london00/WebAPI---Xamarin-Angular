@@ -1,4 +1,5 @@
 using AutoMapper;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 //using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -8,7 +9,10 @@ using Microsoft.AspNetCore.SpaServices.AngularCli;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.IdentityModel.Tokens;
 using Newtonsoft.Json.Serialization;
+using System;
+using System.Text;
 using UdemyDotNetCoreAngular.Configuration;
 using UdemyDotNetCoreAngular.DAL;
 using UdemyDotNetCoreAngular.Domain;
@@ -30,6 +34,7 @@ namespace UdemyDotNetCoreAngular
         {
             #region Configuration
             services.Configure<PhotoSetting>(Configuration.GetSection("PhotoSetting"));
+            services.Configure<JWTSetting>(Configuration.GetSection("JWT"));
             #endregion
 
             #region Dependency Injection
@@ -52,17 +57,32 @@ namespace UdemyDotNetCoreAngular
                 configuration.RootPath = "ClientApp/dist";
             });
 
-            //// 1. Add Authentication Services
-            //services.AddAuthentication(options =>
-            //{
-            //    options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
-            //    options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
-            //}).AddJwtBearer(options =>
-            //{
-            //    options.Authority = Configuration.GetSection("Auth0")["Authority"];
-            //    options.Audience = Configuration.GetSection("Auth0")["Audience"];
-            //});
+            #region JWT
 
+            services.AddAuthentication(options =>
+            {
+                options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+                options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+                options.DefaultScheme = JwtBearerDefaults.AuthenticationScheme;
+            }).AddJwtBearer(options =>
+            {
+                var key = Configuration.GetSection("JWT")["Key"];
+                options.TokenValidationParameters = new Microsoft.IdentityModel.Tokens.TokenValidationParameters
+                {
+                    ValidateIssuerSigningKey = true,
+                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(key)),
+                    ValidateIssuer = false,
+                    ValidateAudience = false,
+                    ClockSkew = TimeSpan.Zero
+                };
+                //options.Authority = Configuration.GetSection("JWT")["Authority"];
+                //options.Audience = Configuration.GetSection("JWT")["Audience"];
+
+                options.SaveToken = false;
+                options.RequireHttpsMetadata = false;
+            });
+
+            #endregion
             services.AddMvc()
                 .SetCompatibilityVersion(CompatibilityVersion.Version_2_2)
                 .AddJsonOptions(options =>
@@ -70,14 +90,17 @@ namespace UdemyDotNetCoreAngular
                     options.SerializerSettings.ContractResolver = new DefaultContractResolver();
                 });
 
+            #region Identity framework
+
             services.AddDbContext<VegaDBContext>(c => c.UseSqlServer(Configuration.GetConnectionString("Default")));
 
             services.AddDefaultIdentity<User>()
                 .AddRoles<IdentityRole>()
                 .AddEntityFrameworkStores<VegaDBContext>();
-                //.AddDefaultTokenProviders();
+            //.AddDefaultTokenProviders();
 
-           
+            #endregion
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
