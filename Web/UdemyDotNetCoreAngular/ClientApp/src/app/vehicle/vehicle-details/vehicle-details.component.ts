@@ -5,6 +5,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { VehicleDTO, Photo } from '../../DTO/ModelContext';
 import { HttpErrorResponse, HttpEventType } from '@angular/common/http';
 import { PhotosService } from '../../services/photos.service';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-vehicle-details',
@@ -26,7 +27,7 @@ export class VehicleDetailsComponent {
   public processCompleted: number = 100;
 
   /** VehicleDetails ctor */
-  constructor(vehicleService: VehicleService, photosService: PhotosService, toastyService: ToastrService, route: ActivatedRoute, router: Router) {
+  constructor(vehicleService: VehicleService, photosService: PhotosService, toastyService: ToastrService, route: ActivatedRoute, router: Router, private authService: AuthService) {
     this.toastyService = toastyService;
     this.vehicleService = vehicleService;
     this.photosService = photosService;

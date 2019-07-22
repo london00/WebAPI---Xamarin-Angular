@@ -3,7 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, ErrorHandler } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 // Third party modules
 import { ToastrModule } from 'ngx-toastr'
@@ -27,6 +27,8 @@ import { LoginComponent } from './admin/user/login/login.component';
 import { RegisterComponent } from './admin/user/register/register.component';
 import { UserService } from './services/user.service';
 import { AuthGuard } from './services/auth-guard.service';
+import { AuthService } from './services/auth.service';
+import { JwtInterceptor } from './services/generic/http-interceptor.service';
 
 @NgModule({
   declarations: [
@@ -50,8 +52,8 @@ import { AuthGuard } from './services/auth-guard.service';
       { path: 'register', component: RegisterComponent },
       { path: 'vehicle/new', component: VehicleComponent, canActivate: [AuthGuard] },
       { path: 'vehicle/:id', component: VehicleComponent, canActivate: [AuthGuard] },
-      { path: 'vehicles', component: GetAllVehiclesComponent, canActivate: [AuthGuard] },
-      { path: 'vehicle/details/:id', component: VehicleDetailsComponent, canActivate: [AuthGuard] }
+      { path: 'vehicles', component: GetAllVehiclesComponent },
+      { path: 'vehicle/details/:id', component: VehicleDetailsComponent }
     ]),
     ToastrModule.forRoot(), // https://www.npmjs.com/package/ngx-toastr
     BrowserAnimationsModule
@@ -66,7 +68,13 @@ import { AuthGuard } from './services/auth-guard.service';
     FeaturesService,
     VehicleService,
     UserService,
-    AuthGuard
+    AuthGuard,
+    AuthService,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: JwtInterceptor,
+      multi: true
+    }
   ],
   bootstrap: [AppComponent]
 })

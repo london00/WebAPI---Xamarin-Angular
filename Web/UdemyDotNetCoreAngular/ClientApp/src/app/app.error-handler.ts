@@ -12,7 +12,10 @@ export class AppErrorHandler implements ErrorHandler {
     this.ngZone.run(
       () => {
         console.warn(this.lastError);
-        if (this.lastError.error) {
+        if (this.lastError.status && this.lastError.status == "401") {
+          this.toastrService.warning("Access denied", "Unauthorized");
+        }
+        else if (this.lastError.error) {
           var errorDescriptions = [];
           if (Array.isArray(error.error)) {
             error.error.forEach((e) => {

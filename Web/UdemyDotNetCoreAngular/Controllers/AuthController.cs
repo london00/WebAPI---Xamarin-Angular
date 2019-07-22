@@ -64,7 +64,7 @@ namespace UdemyDotNetCoreAngular.Controllers
             else
             {
                 ModelState.AddModelError(nameof(userDTO.Password), "Username or password is incorrect.");
-                return BadRequest(ModelState);
+                return Unauthorized(ModelState);
             }
         }
 

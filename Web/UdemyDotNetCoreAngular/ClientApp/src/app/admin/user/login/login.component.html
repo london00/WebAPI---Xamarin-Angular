@@ -1,6 +1,5 @@
 <h2>Log in</h2>
 <form>
-  <h5>{{ loginCredentials | json }}</h5>
   <div class="form-group">
     <label for="email">Email address</label>
     <input type="email" class="form-control" id="email" name="email" aria-describedby="emailHelp" placeholder="Enter email" required [(ngModel)]="loginCredentials.email">

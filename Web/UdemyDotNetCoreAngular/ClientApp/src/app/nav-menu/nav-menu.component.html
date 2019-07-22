@@ -7,19 +7,17 @@
 
     <div class="collapse navbar-collapse" id="navbarColor03">
       <ul class="navbar-nav mr-auto">
-        <li class="nav-item" [routerLinkActive]='["link-active"]' [routerLinkActiveOptions]='{ exact: true }'>
+        <li class="nav-item" [routerLinkActive]='["link-active"]' [routerLinkActiveOptions]='{ exact: true }' *ngIf="authService.isAuthenticated()">
           <a class="nav-link text-dark" [routerLink]='["/"]'>Home</a>
         </li>
         <li class="nav-item" [routerLinkActive]='["link-active"]'>
           <a class="nav-link text-dark" [routerLink]='["/vehicles"]'>Vehicle</a>
         </li>
-        <li class="nav-item" [routerLinkActive]='["link-active"]'>
-          <a class="nav-link text-dark" [routerLink]='["/login"]'>Log in</a>
-        </li>
+        
       </ul>
       <form class="form-inline my-2 my-lg-0">
-        <input class="form-control mr-sm-2" type="text" placeholder="Search">
-        <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
+        <button class="btn btn-secondary my-2 my-sm-0" type="button" [routerLink]='["/login"]' *ngIf="!authService.isAuthenticated()">Log in</button>
+        <button class="btn btn-secondary my-2 my-sm-0" type="button" *ngIf="authService.isAuthenticated()" (click)="authService.LogOut()">Log out</button>
       </form>
     </div>
   </nav>
