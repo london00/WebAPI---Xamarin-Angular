@@ -14,12 +14,12 @@ import { AuthService } from '../../services/auth.service';
 })
 /** VehicleDetails component*/
 export class VehicleDetailsComponent {
+  private vehicleService: VehicleService;
+  private toastyService: ToastrService;
   private route: ActivatedRoute;
   private router: Router;
-  private toastyService: ToastrService;
 
   public vehicle: VehicleDTO;
-  private vehicleService: VehicleService;
   private photosService: PhotosService;
 
   @ViewChild('fileInput') public fileInput: ElementRef;
