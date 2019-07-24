@@ -18,7 +18,7 @@ export class VehicleDetailsComponent {
   private router: Router;
   private toastyService: ToastrService;
 
-  private vehicle: VehicleDTO;
+  public vehicle: VehicleDTO;
   private vehicleService: VehicleService;
   private photosService: PhotosService;
 
@@ -27,7 +27,7 @@ export class VehicleDetailsComponent {
   public processCompleted: number = 100;
 
   /** VehicleDetails ctor */
-  constructor(vehicleService: VehicleService, photosService: PhotosService, toastyService: ToastrService, route: ActivatedRoute, router: Router, private authService: AuthService) {
+  constructor(vehicleService: VehicleService, photosService: PhotosService, toastyService: ToastrService, route: ActivatedRoute, router: Router, public authService: AuthService) {
     this.toastyService = toastyService;
     this.vehicleService = vehicleService;
     this.photosService = photosService;
