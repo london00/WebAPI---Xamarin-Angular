@@ -25,10 +25,22 @@
       <li>Mail: {{ vehicle.Contact.Mail }}</li>
     </ul>
 
-    <button class="btn btn-info" routerLink="/vehicle/{{vehicle.Id}}">Edit</button>
-    <button class="btn btn-danger" type="button" (click)="Delete()">Delete</button>
+    <button class="btn btn-info" routerLink="/vehicle/{{vehicle.Id}}" *ngIf="authService.isAuthenticated()">Edit</button>
+    <button class="btn btn-danger" type="button" (click)="Delete()" *ngIf="authService.isAuthenticated()">Delete</button>
   </div>
   <div class="tab-pane fade" id="vehiclePhoto" role="tabpanel" aria-labelledby="vehiclePhoto-tab">
-    Photos
+    <h2>Photos</h2>
+    <form name="photoForm">
+      <div class="custom-file" *ngIf="authService.isAuthenticated()">
+        <input type="file" class="custom-file-input" (change)="UploadPhoto()" #fileInput />
+        <label class="custom-file-label" for="inputGroupFile02">Choose file</label>
+      </div>
+    </form>
+    <div class="progress" *ngIf="processCompleted != 100">
+      <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" [attr.aria-valuenow]="processCompleted" [style.width]="processCompleted + '%'" aria-valuemin="0" aria-valuemax="100"></div>
+    </div>
+    <div class="well">
+      <img src="/uploads/{{photo.FileName}}" class="photosThumbnail" *ngFor="let photo of vehicle.Photos" />
+    </div>
   </div>
 </div>

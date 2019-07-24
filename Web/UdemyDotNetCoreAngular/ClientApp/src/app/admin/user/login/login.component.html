@@ -1,0 +1,19 @@
+<h2>Log in</h2>
+<form>
+  <div class="form-group">
+    <label for="email">Email address</label>
+    <input type="email" class="form-control" id="email" name="email" aria-describedby="emailHelp" placeholder="Enter email" required [(ngModel)]="loginCredentials.email">
+    <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+  </div>
+  <div class="form-group">
+    <label for="password">Password</label>
+    <input type="password" class="form-control" id="password" name="password" placeholder="Password" required [(ngModel)]="loginCredentials.password">
+  </div>
+  <div class="custom-control custom-checkbox">
+    <input type="checkbox" class="custom-control-input" id="checkOut" checked="" required>
+    <label class="custom-control-label" for="checkOut">Check me out</label>
+  </div>
+  <br />
+  <button type="button" class="btn btn-primary" (click)="login()">Submit</button>
+  <small class="form-text text-muted">If you have not an existing account please click <a class="" routerLink="/register">here</a></small>
+</form>

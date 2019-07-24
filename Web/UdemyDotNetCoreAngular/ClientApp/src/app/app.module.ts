@@ -2,8 +2,8 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, ErrorHandler } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 // Third party modules
 import { ToastrModule } from 'ngx-toastr'
@@ -12,8 +12,6 @@ import { ToastrModule } from 'ngx-toastr'
 import { AppComponent } from './app.component';
 import { NavMenuComponent } from './nav-menu/nav-menu.component';
 import { HomeComponent } from './home/home.component';
-import { CounterComponent } from './counter/counter.component';
-import { FetchDataComponent } from './fetch-data/fetch-data.component';
 import { VehicleComponent } from "./vehicle/vehicle/vehicle.component";
 
 // Providers
@@ -21,31 +19,39 @@ import { MakeService } from './services/makes.service';
 import { FeaturesService } from './services/features.service';
 import { VehicleService } from './services/vehicle.service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { AppErrorHandler } from './app.error-handler';
 import { GetAllVehiclesComponent } from './vehicle/get-all-vehicles/get-all-vehicles.component';
 import { VehicleDetailsComponent } from './vehicle/vehicle-details/vehicle-details.component';
+import { PhotosService } from './services/photos.service';
+import { AppErrorHandler } from './app.error-handler';
+import { LoginComponent } from './admin/user/login/login.component';
+import { RegisterComponent } from './admin/user/register/register.component';
+import { UserService } from './services/user.service';
+import { AuthGuard } from './services/auth-guard.service';
+import { AuthService } from './services/auth.service';
+import { JwtInterceptor } from './services/generic/http-interceptor.service';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavMenuComponent,
     HomeComponent,
-    CounterComponent,
-    FetchDataComponent,
     VehicleComponent,
     GetAllVehiclesComponent,
-    VehicleDetailsComponent
+    VehicleDetailsComponent,
+    LoginComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
     HttpClientModule,
     FormsModule,
     RouterModule.forRoot([
-      { path: '', component: HomeComponent, pathMatch: 'full' },
-      { path: 'counter', component: CounterComponent },
-      { path: 'fetch-data', component: FetchDataComponent },
-      { path: 'vehicle/new', component: VehicleComponent },
-      { path: 'vehicle/:id', component: VehicleComponent },
+      { path: '', component: HomeComponent, pathMatch: 'full', canActivate: [AuthGuard] },
+      { path: 'login', component: LoginComponent },
+      { path: 'login/:email', component: LoginComponent },
+      { path: 'register', component: RegisterComponent },
+      { path: 'vehicle/new', component: VehicleComponent, canActivate: [AuthGuard] },
+      { path: 'vehicle/:id', component: VehicleComponent, canActivate: [AuthGuard] },
       { path: 'vehicles', component: GetAllVehiclesComponent },
       { path: 'vehicle/details/:id', component: VehicleDetailsComponent }
     ]),
@@ -53,12 +59,21 @@ import { VehicleDetailsComponent } from './vehicle/vehicle-details/vehicle-detai
     BrowserAnimationsModule
   ],
   providers: [
-    MakeService,
-    FeaturesService,
-    VehicleService,
+    PhotosService,
     {
       provide: ErrorHandler,
       useClass: AppErrorHandler
+    },
+    MakeService,
+    FeaturesService,
+    VehicleService,
+    UserService,
+    AuthGuard,
+    AuthService,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: JwtInterceptor,
+      multi: true
     }
   ],
   bootstrap: [AppComponent]

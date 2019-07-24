@@ -12,8 +12,21 @@ export class AppErrorHandler implements ErrorHandler {
     this.ngZone.run(
       () => {
         console.warn(this.lastError);
-        if (this.lastError.error) {
-          this.toastrService.error(this.lastError.error.title, "Error");
+        if (this.lastError.status && this.lastError.status == "401") {
+          this.toastrService.warning("Access denied", "Unauthorized");
+        }
+        else if (this.lastError.error) {
+          var errorDescriptions = [];
+          if (Array.isArray(error.error)) {
+            error.error.forEach((e) => {
+              errorDescriptions.push(e.Description);
+            });
+
+            this.toastrService.warning(errorDescriptions.join("\n"), "Validation errors", { timeOut: 5000 });
+          }
+          else {
+            this.toastrService.error(this.lastError.error.title, "Error");
+          }
         }
         else {
           this.toastrService.error("An unexpected error happened", "Error");

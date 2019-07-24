@@ -53,6 +53,7 @@ export class VehicleDTO {
   public Model: KeyValuePairDTO;
   public Make: KeyValuePairDTO;
   public VehicleFeatures: Array<KeyValuePairDTO>;
+  public Photos: Array<Photo>;
 }
 
 
@@ -64,4 +65,15 @@ export class VehicleFilters {
 
   public ModelId: number;
   public MakeId: number;
+}
+
+export class Photo {
+  public Id: number;
+  public FileName: number;
+}
+
+export class UserDTO {
+  public UserName: string;
+  public Email: string;
+  public Password: string;
 }

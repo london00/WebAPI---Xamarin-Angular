@@ -1,10 +1,11 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 using UdemyDotNetCoreAngular.Domain.Maps;
 using UdemyDotNetCoreAngular.Domain.Models;
 
 namespace UdemyDotNetCoreAngular.Domain
 {
-    public class VegaDBContext : DbContext
+    public class VegaDBContext : IdentityDbContext
     {
         #region DBSet
         public DbSet<Make> Makes { get; set; }
@@ -13,6 +14,7 @@ namespace UdemyDotNetCoreAngular.Domain
         public DbSet<Vehicle> Vehicles { get; set; }
         public DbSet<VehicleFeature> VehicleFeatures { get; set; }
         public DbSet<Photo> Photos { get; set; }
+        public DbSet<User> Users { get; set; }
         #endregion
 
         public VegaDBContext(DbContextOptions<VegaDBContext> dbContext): base(dbContext)

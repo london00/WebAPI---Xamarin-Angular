@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="UdemyCourse.Mobile.Pages.Udemy.Examples.E4_CustomListView_Page">
+    <ContentPage.Content>
+        <StackLayout>
+            <ListView x:Name="lstNames" ItemsSource="{Binding lstNames}" HasUnevenRows="True" ItemSelected="LstNames_ItemSelected">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell >
+                            <StackLayout Orientation="Horizontal" Padding="5" >
+                                <Image Source="{Binding PhotoPath}"  HeightRequest="100"/>
+                                <StackLayout Orientation="Vertical" HorizontalOptions="StartAndExpand">
+                                    <Label Text="{Binding Name}" FontSize="Medium" TextColor="#546E7A"/>
+                                    <Label Text="{Binding Status}" FontSize="Small" TextColor="#263238"/>
+                                </StackLayout>
+                                <Label Text="Follow" VerticalOptions="Center" TextColor="#2196F3" />
+                                <Switch Toggled="Switch_ToggledAsync" />
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
