@@ -4,5 +4,6 @@
   <domain-config cleartextTrafficPermitted="true">
     <domain includeSubdomains="true">http://lorempixel.com</domain>
     <domain includeSubdomains="true">https://picsum.photos</domain>
+    <domain includeSubdomains="true">https://udemyangularwebapisite.azurewebsites.net</domain>
   </domain-config>
 </network-security-config>

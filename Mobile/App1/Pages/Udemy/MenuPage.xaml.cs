@@ -14,6 +14,7 @@ namespace UdemyCourse.Mobile.Pages.Udemy
         {
             InitializeComponent();
             var PagesList = new List<string>();
+            PagesList.Add("Example 0 - Rest APP");
             PagesList.Add("Example 1");
             PagesList.Add("Example 2 - Embeded images");
             PagesList.Add("Excercise 1");
@@ -33,6 +34,9 @@ namespace UdemyCourse.Mobile.Pages.Udemy
 
             switch (selectedItem.ToString())
             {
+                case "Example 0 - Rest APP":
+                    await Navigation.PushAsync(new MainPage());
+                    break;
                 case "Example 1":
                     await Navigation.PushAsync(new Exmple1Page());
                     break;

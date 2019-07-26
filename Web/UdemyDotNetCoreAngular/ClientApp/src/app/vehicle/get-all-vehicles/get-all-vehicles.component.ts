@@ -17,7 +17,7 @@ export class GetAllVehiclesComponent {
   public makes: MakeDTO[];
   public filters: VehicleFilters;
   /** GetAllVehicles ctor */
-  constructor(private vehicleService: VehicleService, private toastyService: ToastrService, private route: ActivatedRoute, private router: Router, private ngZone: NgZone, private makeService: MakeService, private Auth: AuthService) {
+  constructor(private vehicleService: VehicleService, private toastyService: ToastrService, private route: ActivatedRoute, private router: Router, private ngZone: NgZone, private makeService: MakeService, public Auth: AuthService) {
     this.filters = new VehicleFilters();
   }
 

@@ -12,7 +12,7 @@ namespace UdemyCourse.Mobile.Pages
     [DesignTimeVisible(false)]
     public partial class MainPage : ContentPage
     {
-        const string urlBase = "http://localhost:9999";
+        const string urlBase = "https://udemyangularwebapisite.azurewebsites.net";
         private HttpClient httpClient;
 
         private List<MakeDTO> makeDTOs = new List<MakeDTO>();
