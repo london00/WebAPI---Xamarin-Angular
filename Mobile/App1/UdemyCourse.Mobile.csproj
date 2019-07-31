@@ -13,10 +13,13 @@
   <ItemGroup>
     <None Remove="Images\arrow.png" />
     <None Remove="Images\lake.jpg" />
+    <None Remove="Images\login_background.jpg" />
+    <None Remove="Images\xamarin_transparency.jpg" />
   </ItemGroup>
 
   <ItemGroup>
     <EmbeddedResource Include="Images\lake.jpg" />
+    <EmbeddedResource Include="Images\xamarin_transparency.jpg" />
   </ItemGroup>
 
   <ItemGroup>
@@ -31,6 +34,10 @@
 
   <ItemGroup>
     <EmbeddedResource Include="Images\arrow.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Images\login_background.jpg" />
   </ItemGroup>
 
   <ItemGroup>
@@ -80,6 +87,9 @@
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Pages\Udemy\Exercises\E5_ImageGaleryPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Pages\Udemy\LogInPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Pages\Udemy\MenuPage.xaml">
