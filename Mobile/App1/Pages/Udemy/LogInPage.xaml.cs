@@ -16,6 +16,8 @@ namespace UdemyCourse.Mobile.Pages.Udemy
     {
         const string urlBase = "https://udemyangularwebapisite.azurewebsites.net";
         private HttpClient httpClient;
+        private double width;
+        private double height;
 
         public LogInPage()
         {
@@ -73,6 +75,27 @@ namespace UdemyCourse.Mobile.Pages.Udemy
         private class Token
         {
             public string token { get; set; }
+        }
+
+        protected override void OnSizeAllocated(double width, double height)
+        {
+            base.OnSizeAllocated(width, height);
+
+            if (width != this.width || height != this.height)
+            {
+                this.width = width;
+                this.height = height;
+                if (width > height)
+                {
+                    outerStack.Orientation = StackOrientation.Horizontal;
+                    innerStack.WidthRequest = (this.width / 3) * 2;
+                }
+                else
+                {
+                    outerStack.Orientation = StackOrientation.Vertical;
+                    innerStack.MinimumWidthRequest = 0;
+                }
+            }
         }
     }
 }

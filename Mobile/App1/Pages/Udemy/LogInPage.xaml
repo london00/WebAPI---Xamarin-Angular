@@ -8,9 +8,9 @@
              x:Class="UdemyCourse.Mobile.Pages.Udemy.LogInPage" BackgroundImageSource="{local:EmbeddedImage ResourceId=UdemyCourse.Mobile.Images.login_background.jpg}">
     <ContentPage.Content>
         <ScrollView>
-            <StackLayout VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" >
+            <StackLayout VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" x:Name="outerStack">
                 <Image Source="{local:EmbeddedImage ResourceId=UdemyCourse.Mobile.Images.xamarin_transparency.jpg}" VerticalOptions="CenterAndExpand" HorizontalOptions="FillAndExpand" />
-                <StackLayout VerticalOptions="EndAndExpand" Padding="20, 10, 10, 10">
+                <StackLayout VerticalOptions="EndAndExpand" Padding="20, 10, 10, 10" x:Name="innerStack">
                     <Label Text="Log in" FontSize="Title" FontAttributes="Bold" />
                     <Label Text="Email" FontSize="Caption" />
                     <Entry Placeholder="Enter mail" x:Name="txtEmail" />
