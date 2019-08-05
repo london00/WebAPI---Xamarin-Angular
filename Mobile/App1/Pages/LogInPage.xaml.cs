@@ -59,7 +59,7 @@ namespace UdemyCourse.Mobile.Pages.Udemy
                 if (isRememberChecked.IsToggled)
                 {
                     var token = Newtonsoft.Json.JsonConvert.DeserializeObject<Token>(response);
-                    Application.Current.Properties["token"] = token;
+                    Application.Current.Properties["token"] = token.token;
                     //httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", "");
                     //httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
                 }
