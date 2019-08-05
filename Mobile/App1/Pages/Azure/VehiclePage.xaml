@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="UdemyCourse.Mobile.Pages.Azure.VehiclePage"
+             Title="Vehicle"
+             Padding ="20,10,10,10"
+             >
+    <ContentPage.Content>
+        <StackLayout>
+            <Label Text="Please complete the vehicle information" FontSize="Title" />
+
+            <Label Text="Make" FontSize="Caption" />
+            <Picker x:Name="pickerMakes" SelectedIndexChanged="pickerMakes_SelectedIndexChanged"/>
+
+            <Label Text="Model" FontSize="Caption" />
+            <Picker x:Name="pickerModels" SelectedIndexChanged="pickerModels_SelectedIndexChanged"/>
+
+            <Label Text="Model" FontSize="Caption" />
+            <StackLayout Orientation="Vertical" x:Name="stackFeatures">
+            </StackLayout>
+
+            <Label Text="Contact Name" FontSize="Caption" />
+            <Entry  Placeholder="Contact Name" />
+
+            <Label Text="Contact Phone" FontSize="Caption" />
+            <Entry  Placeholder="Contact Phone" />
+
+            <Label Text="Contact Email" FontSize="Caption" />
+            <Entry  Placeholder="Contact Email" />
+
+            <StackLayout Orientation="Horizontal">
+                <Button Text="Save" />
+                <Button Text="Cancel" Clicked="Button_Clicked" />
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

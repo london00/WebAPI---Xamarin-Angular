@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using UdemyCourse.Mobile.Pages.Azure;
 using UdemyCourse.Mobile.Pages.Udemy.Examples;
 using UdemyCourse.Mobile.Pages.Udemy.Exercises;
 using Xamarin.Forms;
@@ -15,6 +16,7 @@ namespace UdemyCourse.Mobile.Pages.Udemy
             InitializeComponent();
             var PagesList = new List<string>();
             PagesList.Add("Example 0 - Rest APP");
+            PagesList.Add("Example 0 - Create Vehicle");
             PagesList.Add("Example 1");
             PagesList.Add("Example 2 - Embeded images");
             PagesList.Add("Excercise 1");
@@ -36,6 +38,9 @@ namespace UdemyCourse.Mobile.Pages.Udemy
             {
                 case "Example 0 - Rest APP":
                     await Navigation.PushAsync(new MainPage());
+                    break;
+                case "Example 0 - Create Vehicle":
+                    await Navigation.PushAsync(new VehiclePage());
                     break;
                 case "Example 1":
                     await Navigation.PushAsync(new Exmple1Page());

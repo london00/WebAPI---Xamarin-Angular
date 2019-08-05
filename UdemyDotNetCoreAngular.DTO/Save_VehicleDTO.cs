@@ -5,6 +5,10 @@ namespace UdemyDotNetCoreAngular.DTO
 {
     public class Save_VehicleDTO: IValidatableObject
     {
+        public Save_VehicleDTO()
+        {
+            VehicleFeatures = new List<VehicleFeatureDTO>();
+        }
         public int Id { get; set; }
         [Required]
         public int ModelId { get; set; }
