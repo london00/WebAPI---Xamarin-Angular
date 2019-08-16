@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:local="clr-namespace:UdemyCourse.Mobile.MarkupExtensions"
+             mc:Ignorable="d"
+             x:Class="UdemyCourse.Mobile.Pages.Udemy.LogInPage" BackgroundImageSource="{local:EmbeddedImage ResourceId=UdemyCourse.Mobile.Images.login_background.jpg}">
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" x:Name="outerStack">
+                <Image Source="{local:EmbeddedImage ResourceId=UdemyCourse.Mobile.Images.xamarin_transparency.jpg}" VerticalOptions="CenterAndExpand" HorizontalOptions="FillAndExpand" />
+                <StackLayout VerticalOptions="EndAndExpand" Padding="20, 10, 10, 10" x:Name="innerStack">
+                    <Label Text="Log in" FontSize="Title" FontAttributes="Bold" />
+                    <Label Text="Email" FontSize="Caption" />
+                    <Entry Placeholder="Enter mail" x:Name="txtEmail" />
+                    <Label Text="Password" FontSize="Caption" />
+                    <Entry Placeholder="Password" x:Name="txtPassword" IsPassword="True" />
+                    <StackLayout Orientation="Horizontal" HorizontalOptions="End">
+                        <Label Text="Remember me" FontSize="Large" VerticalOptions="Center" />
+                        <Switch  WidthRequest="70" x:Name="isRememberChecked" />
+                    </StackLayout>
+                    <Button  Text="Submit" BackgroundColor="Black" TextColor="White" Clicked="Button_Clicked" x:Name="btnLogIn"/>
+                    <Label Text="If you have not an existing account please click here"  FontSize="Caption"/>
+                </StackLayout>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

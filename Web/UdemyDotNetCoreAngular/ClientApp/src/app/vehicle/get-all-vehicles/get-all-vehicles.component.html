@@ -1,4 +1,11 @@
-<h1>Vehicles</h1>
+<div class="row">
+  <div class="col-10">
+    <h1>Vehicles</h1>
+  </div>
+  <div class="col-2">
+    <a class="btn btn-info float-right" routerLink="/vehicle/new" *ngIf="Auth.isAuthenticated()">Add vehicle</a>
+  </div>
+</div>
 <div class="jumbotron">
   <h2>Filters</h2>
   <div class="form-group">

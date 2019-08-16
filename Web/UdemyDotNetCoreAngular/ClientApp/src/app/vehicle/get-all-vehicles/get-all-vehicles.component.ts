@@ -4,6 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { VehicleService } from '../../services/vehicle.service';
 import { VehicleFilters, MakeDTO, VehicleDTO } from '../../DTO/ModelContext';
 import { MakeService } from '../../services/makes.service';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-get-all-vehicles',
@@ -16,7 +17,7 @@ export class GetAllVehiclesComponent {
   public makes: MakeDTO[];
   public filters: VehicleFilters;
   /** GetAllVehicles ctor */
-  constructor(private vehicleService: VehicleService, private toastyService: ToastrService, private route: ActivatedRoute, private router: Router, private ngZone: NgZone, private makeService: MakeService) {
+  constructor(private vehicleService: VehicleService, private toastyService: ToastrService, private route: ActivatedRoute, private router: Router, private ngZone: NgZone, private makeService: MakeService, public Auth: AuthService) {
     this.filters = new VehicleFilters();
   }
 

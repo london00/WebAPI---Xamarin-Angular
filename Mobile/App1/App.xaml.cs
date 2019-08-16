@@ -10,8 +10,18 @@ namespace UdemyCourse.Mobile
         public App()
         {
             InitializeComponent();
-
-            MainPage = new NavigationPage(new MenuPage());
+            // TODO: Use localstorage or sqlite to store credentials.
+            if (Properties.ContainsKey("token"))
+            {
+                MainPage = new NavigationPage(new MenuPage()) {
+                    BarBackgroundColor = Color.Black,
+                    BarTextColor = Color.White
+                };
+            }
+            else
+            {
+                MainPage = new LogInPage();
+            }
         }
 
         protected override void OnStart()
